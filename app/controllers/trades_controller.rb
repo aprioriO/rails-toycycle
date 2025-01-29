@@ -3,7 +3,9 @@ class TradesController < ApplicationController
   def create
     @toy = Toy.find(params[:toy_id])
     @trade = Trade.new(trade_params)
-    @trade.toy_trader = @toy
+    @trade.trader_toy = @toy
+    @trade.trader = @toy.user
+    @trade.seeker = current_user
     if @trade.save
       redirect_to dashboard_path
     else
@@ -19,6 +21,6 @@ class TradesController < ApplicationController
   private
 
   def trade_params
-    params.require(:trade).permit(:toy_seeker_id)
+    params.require(:trade).permit(:seeker_toy_id)
   end
 end

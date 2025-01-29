@@ -1,4 +1,7 @@
 class Trade < ApplicationRecord
-  belongs_to :toy_seeker, class_name: "Toy", foreign_key: "toy_seeker_id"
-  belongs_to :toy_trader, class_name: "Toy", foreign_key: "toy_trader_id"
+  belongs_to :seeker, class_name: "User"
+  belongs_to :trader, class_name: "User"
+
+  belongs_to :seeker_toy, class_name: "Toy", foreign_key: "seeker_toy_id"
+  belongs_to :trader_toy, class_name: "Toy", foreign_key: "trader_toy_id"
 end

@@ -1,7 +1,14 @@
 <h1>Dashboard</h1>
-
+<h2>Toys that you requested: </h2>
 <ul>
-  <% Trade.all.each do |trade| %>
-    <li><p>You requested <%= trade.toy_trader.name %> status: <%= trade.status %></p></li>
+  <% current_user.trades_as_seeker.each do |trade| %>
+    <li><p>You requested <%= trade.trader_toy.name %> status: <%= trade.status %></p></li>
+  <% end %>
+</ul>
+
+<h2>Toys that you are trading: </h2>
+<ul>
+  <% current_user.trades_as_trader.each do |trade| %>
+    <li><p>Trades <%= trade.seeker_toy.name %> requested status: <%= trade.status %></p></li>
   <% end %>
 </ul>

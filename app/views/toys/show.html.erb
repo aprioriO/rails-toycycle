@@ -19,7 +19,7 @@
 
   <div class="mb-4 mt-4 text-center">
     <%= simple_form_for [@toy, @trade] do |f| %>
-      <%= f.association :toy_seeker, collection: current_user.toys %>
+      <%= f.association :seeker_toy, collection: current_user.toys %>
       <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
     <% end %>
   </div>
