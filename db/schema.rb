@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_28_150604) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_29_115323) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_28_150604) do
     t.bigint "toy_trader_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "pending", null: false
     t.index ["toy_seeker_id"], name: "index_trades_on_toy_seeker_id"
     t.index ["toy_trader_id"], name: "index_trades_on_toy_trader_id"
   end

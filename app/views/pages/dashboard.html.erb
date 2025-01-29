@@ -1,1 +1,7 @@
 <h1>Dashboard</h1>
+
+<ul>
+  <% Trade.all.each do |trade| %>
+    <li><p>You requested <%= trade.toy_trader.name %> status: <%= trade.status %></p></li>
+  <% end %>
+</ul>
