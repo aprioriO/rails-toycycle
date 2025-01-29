@@ -7,9 +7,10 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
-User.destroy_all
+require "open-uri"
 Toy.destroy_all
+User.destroy_all
+
 
 users = [
   { username: "jdoe1", email: "jdoe1@example.com", password: "123456", description: "A creative individual and mom of two young kids who loves giving old toys a second life. She prefers trading with others who appreciate a good deal and is always on the lookout for something fun to refresh her children's collection."},
@@ -24,6 +25,13 @@ users = [
 users.each do |user|
   User.create!(user)
 end
+
+
+file = URI.parse("https://kitt.lewagon.com/placeholder/users/sarahlafer").open
+first_user = User.first
+first_user.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
+first_user.save
+
 
 puts "Seeded #{User.count} users"
 
