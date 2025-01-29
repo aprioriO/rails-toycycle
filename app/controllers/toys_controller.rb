@@ -4,4 +4,12 @@ class ToysController < ApplicationController
     @toy = Toy.find(params[:id])
   end
 
+  def index
+    if params[:category].present?
+      @toys = Toy.where(category: params[:category])  # Filters by category
+    else
+      @toys = Toy.all  # else shows ALL toys
+    end
+  end
+
 end
