@@ -1,46 +1,32 @@
 <div class = "container">
   <div class="user-profile">
-    <div class="user-name">
+    <div class="user-image">
+      <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+    </div>
+
+    <div class="profile-content">
+      <div class="user-name">
     <!-- Display the user's name -->
         <h1><%= @user.username %></h1>
     </div>
-    <div class="user-image">
-      <!-- Placeholder for the user's profile image -->
-     <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+
+    <div class="user-description">
+        <p><%= @user.description %></p>
     </div>
-
-  <div class="user-description">
-      <!-- Display the user's description/bio -->
-      <p><%= @user.description %></p>
   </div>
-
-
-  </div>
-
-  <div class="user-rating">
-      <!-- Display the user's rating -->
-      <p>this div is for Rating: / 5</p>
-  </div>
-
-    <!-- User Reviews -->
-  <div class="user-reviews">
-    <h2>this div is for Reviews:</h2>
-  </div>
-
-    <!-- User's Items for Trade -->
-    <div class="user-trade-items">
-      <!-- Placeholder for items the user has up for trade -->
-      <h2>Items Available for Trade:</h2>
-    </div>
 </div>
 
+  <div class="bottom-sections">
+    <div class="user-rating">
+        <p>this div is for Rating: / 5</p>
+    </div>
 
+    <div class="user-reviews">
+      <h2>this div is for Reviews:</h2>
+    </div>
+  </div>
 
-
-
-
-<%# <%= simple_form_for(article) do |f| %>
-  <!-- [...] -->
-  <%# <%= f.input :photo, as: :file %>
-  <!-- [...] -->
-<%# <% end %>
+      <div class="user-trade-items">
+        <h2>Items Available for Trade:</h2>
+      </div>
+  </div>

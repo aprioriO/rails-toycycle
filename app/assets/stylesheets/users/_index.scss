@@ -1,0 +1,139 @@
+/* Main container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+
+/* User profile section */
+.user-profile {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+/* User name */
+.user-name h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* User image */
+.user-image {
+  flex-shrink: 0;
+  width: 300px;
+}
+
+.user-image img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.user-image img:hover {
+  transform: scale(1.02);
+}
+
+/* User description */
+.user-description {
+  flex-grow: 1;
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.user-description p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Bottom sections container */
+.bottom-sections {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+/* User rating and reviews - each takes up half the space */
+.user-rating,
+.user-reviews {
+  flex: 1;
+  min-width: calc(50% - 1rem);
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-rating p {
+  font-size: 1.2rem;
+  color: #444;
+  font-weight: 500;
+}
+
+.user-reviews h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* User trade items */
+.user-trade-items {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-trade-items h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .user-profile {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .user-image {
+    width: 200px;
+  }
+
+  .user-image img {
+    width: 200px;
+    height: 200px;
+  }
+
+  .user-name h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .user-rating,
+  .user-reviews {
+    min-width: 100%;
+  }
+}
