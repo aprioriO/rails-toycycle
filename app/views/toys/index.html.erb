@@ -1,1 +1,45 @@
-<h1>All Toys</h1>
+<div class="container">
+  <h1 class="text-left mb-4 mt-3">
+    <% if params[:category].present? %>
+      <%= params[:category] %>
+    <% else %>
+      All Toys
+    <% end %>
+  </h1>
+
+   <div class="mb-4 text-left">
+      <%= link_to toys_path do %>
+        <%= image_tag 'all_toys.png', class: 'mx-2', style: 'max-width: 100px;' %>
+      <% end %>
+      <%= link_to toys_path(category: "Educational Toys") do %>
+        <%= image_tag 'Educational.png', class: 'mx-2', style: 'max-width: 100px;' %>
+      <% end %>
+      <%= link_to toys_path(category: "Outdoor & Sports Toys") do %>
+        <%= image_tag 'Outdoor.png', class: 'mx-2', style: 'max-width: 100px;' %>
+      <% end %>
+      <%= link_to toys_path(category: "Creative & Art Toys") do %>
+        <%= image_tag 'Creative.png', class: 'mx-2', style: 'max-width: 100px;' %>
+      <% end %>
+      <%= link_to toys_path(category: "Action Figures & Dolls") do %>
+        <%= image_tag 'Dolls.png', class: 'mx-2', style: 'max-width: 100px;' %>
+      <% end %>
+    </div>
+
+   <div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @toys.each do |toy| %>
+      <div class="col">
+        <div class="card h-100 shadow-lg">
+          <%= image_tag 'Dolls.png', class: "card-img-top", alt: toy.name %>
+          <div class="card-body d-flex flex-column h-100">
+            <h5 class="card-title"><%= toy.name %></h5>
+            <p class="card-text text-muted">
+              <%= toy.description %>
+              Status: <strong><%= toy.status %></strong>
+            </p>
+            <%= link_to 'Take a look', toy_path(toy), class: 'btn btn-success mt-auto' %>
+          </div>
+        </div>
+     </div>
+    <% end %>
+
+</div>
