@@ -6,4 +6,5 @@ class Toy < ApplicationRecord
 
   validates :name, :location, :category, :description, :condition, :status, :need_in_return, presence: true
 
+  has_one_attached :photo
 end
