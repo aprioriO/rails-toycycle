@@ -13,4 +13,8 @@ class ToysController < ApplicationController
     end
   end
 
+  def new
+    @toy = Toy.new
+  end
+
 end
