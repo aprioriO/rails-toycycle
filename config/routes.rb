@@ -17,4 +17,10 @@ Rails.application.routes.draw do
   end
 
   resources :trades, only: [:show]
+  resources :trades do
+    member do
+      patch :accept
+      patch :reject
+    end
+  end
 end
