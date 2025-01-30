@@ -1,0 +1,24 @@
+<div class="container chat">
+  <h1>Your Trade for <%= @trade.restaurabookingnt.name %></h1>
+
+  <div id="messages" class="messages">
+    <% @trade.messages.each do |message| %>
+      <div id="message-<%= message.id %>">
+        <small>
+          <strong><%= message.user.nickname %></strong>
+          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p><%= message.content %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% if @trades.exists? %>
+  <h2>Your trades</h2>
+  <ul>
+    <% @trades.each do |trade| %>
+      <li><%= link_to trade.date.strftime("%a %b %e"), trade %></li>
+    <% end %>
+  </ul>
+<% end %>
