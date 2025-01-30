@@ -161,6 +161,10 @@
   padding: 16px;
 }
 
+.card-product {
+  margin-bottom: 20px; /* Adds space between the containers */
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .container {
