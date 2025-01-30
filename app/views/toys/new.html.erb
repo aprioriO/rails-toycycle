@@ -1,10 +1,22 @@
 <h1>Add a New Toy</h1>
-<%= simple_form_for @toy do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :category, collection: ["Educational Toys", "Outdoor & Sports Toys", "Creative & Art Toys", "Action Figures & Dolls"] %>
-  <%= f.input :condition, collection: ["New", "Excellent", "Good", "Used"] %>
-  <%= f.input :need_in_return %>
-  <%= f.input :image, as: :file %>
+<%= simple_form_for(@toy, html: { class: 'form-horizontal' }) do |f| %>
+  <div class="form-group">
+    <%= f.input :name, label: 'Toy Name', input_html: { class: 'form-control' } %>
+  </div>
+  <div class="form-group">
+    <%= f.input :description %>
+  </div>
+  <div class="form-group">
+    <%= f.input :category, collection: ["Educational Toys", "Outdoor & Sports Toys", "Creative & Art Toys", "Action Figures & Dolls"] %>
+  </div>
+  <div class="form-group">
+    <%= f.input :condition, collection: ["New", "Excellent", "Good", "Used"] %>
+  </div>
+  <div class="form-group">
+    <%= f.input :need_in_return %>
+  </div>
+  <div class="form-group">
+    <%= f.input :image, as: :file %>
+  </div>
   <%= f.button :submit, "Create Toy" %>
 <% end %>
