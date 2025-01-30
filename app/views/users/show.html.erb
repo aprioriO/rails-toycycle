@@ -1,2 +1,44 @@
-<h1><%= @user.username %> <h1>
-<h2><%= @user.description%> <h2>
+<div class = "container">
+  <div class="user-profile">
+    <div class="user-image">
+      <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+    </div>
+
+    <div class="profile-content">
+      <div class="user-name">
+    <!-- Display the user's name -->
+        <h1><%= @user.username %></h1>
+    </div>
+
+    <div class="user-description">
+        <p><%= @user.description %></p>
+    </div>
+    </div>
+  </div>
+
+  <div class="bottom-sections">
+    <div class="user-rating">
+        <h1>⭐⭐⭐⭐⭐ Rating</h1>
+    </div>
+
+    <div class="user-reviews">
+      <p><%= @user.username %> was very responsive with messages and easy to swap with<p>
+    </div>
+  </div>
+
+  <div class="card-product">
+    <img src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=" />
+      <div class="card-product-infos">
+        <h2>Items Available for Trade:</h2>
+        <p>Product description with <strong>relevant info</strong> only.</p>
+      </div>
+  </div>
+
+  <div class="card-product">
+    <img src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=" />
+      <div class="card-product-infos">
+        <h2>Items Available for Trade:</h2>
+        <p>Product description with <strong>relevant info</strong> only.</p>
+      </div>
+  </div>
+</div>
