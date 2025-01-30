@@ -53,7 +53,7 @@ gem "sassc-rails"
 gem "cloudinary"
 
 
-gem "dotenv-rails"
+
 
 group :development, :test do
   gem "dotenv-rails"

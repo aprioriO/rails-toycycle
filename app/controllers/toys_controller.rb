@@ -19,7 +19,8 @@ class ToysController < ApplicationController
 
   def create
     @toy = Toy.new(toy_params)
-    if @toy.save
+    @toy.user = current_user
+    if @toy.save!
       redirect_to toys_path, notice: "Toy created successfully!"
     else
       render :new, status: :unprocessable_entity
@@ -29,7 +30,6 @@ class ToysController < ApplicationController
   private
 
   def toy_params
-    params.require(:toy).permit(:name, :location, :category, :description, :condition, :image)
+    params.require(:toy).permit(:name, :location, :category, :description, :need_in_return, :condition, :photo)
   end
-
 end
