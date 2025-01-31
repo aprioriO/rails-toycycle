@@ -29,7 +29,11 @@
     <% @toys.each do |toy| %>
       <div class="col">
         <div class="card h-100 shadow-lg">
-          <%= image_tag 'Dolls.png', class: "card-img-top", alt: toy.name %>
+          <% if toy.photo.attached? %>
+            <%= image_tag toy.photo, class: "card-img-top", alt: toy.name %>
+          <% else %>
+            <%= image_tag 'placeholder.png', class: "card-img-top", alt: toy.name %>
+          <% end %>
           <div class="card-body d-flex flex-column h-100">
             <h5 class="card-title"><%= toy.name %></h5>
             <p class="card-text text-muted">

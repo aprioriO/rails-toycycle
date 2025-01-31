@@ -26,14 +26,14 @@ users = [
 
 
 image_urls = [
-  "https://kitt.lewagon.com/placeholder/users/cveneziani",
-  "https://kitt.lewagon.com/placeholder/users/sarahlafer",
-  "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBN0tUQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--9d5897c3f8aba7fa7f989a773c8d31dbfb901b24/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/118938573_645553716334950_5443954743419152118_n.jpg",
-  "https://kitt.lewagon.com/placeholder/users/cveneziani",
-  "https://avatar.iran.liara.run/public",
-  "https://avatar.iran.liara.run/public/boy",
-  "https://avatar.iran.liara.run/public/girl",
-  "https://avatar.iran.liara.run/public/85"
+  "https://cdn.prod.website-files.com/6365d860c7b7a7191055eb8a/65a751741ddf78d3cc798f24_Lana%20Steiner-p-500.jpg",
+  "https://cdn.prod.website-files.com/6365d860c7b7a7191055eb8a/65a74f49e4ae12986f0d9e75_Drew%20Cano-p-500.jpg",
+  "https://cdn.prod.website-files.com/6365d860c7b7a7191055eb8a/65a7521ac969907eada03c07_Mikey%20Lawrence-p-500.jpg",
+  "https://cdn.prod.website-files.com/6365d860c7b7a7191055eb8a/65a74dbf4f6d57df0bf51624_Ava%20Wright-p-500.jpg",
+  "https://cdn.prod.website-files.com/6365d860c7b7a7191055eb8a/65a753049744df4a8765df41_Rene%20Wells-p-500.jpg",
+  "https://cdn.prod.website-files.com/6365d860c7b7a7191055eb8a/65a75352b2b14dfe494ff03a_Rosalee%20Melvin-p-500.jpg",
+  "https://cdn.prod.website-files.com/6365d860c7b7a7191055eb8a/65a751a0a4117992e1b980d8_Loki%20Bright-p-500.jpg",
+  "https://cdn.prod.website-files.com/6365d860c7b7a7191055eb8a/65a74b9b6a26cde15a2703e3_Ammar%20Foley-p-500.jpg"
 ]
 
 users.each_with_index do |user,index|
@@ -95,15 +95,17 @@ toy_urls = [
   "https://m.media-amazon.com/images/I/714qFCBjOcL.__AC_SY300_SX300_QL70_ML2_.jpg",
   "https://www.zieler.co.uk/wp-content/uploads/2019/09/09299264.png",
   "https://m.media-amazon.com/images/I/81UhzwkL5YL.__AC_SX300_SY300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/71re94tv3LL._AC_SX522_.jpg",
+  "https://m.media-amazon.com/images/I/51UGC2cmEgL.__AC_SX300_SY300_QL70_ML2_.jpg",
   "https://m.media-amazon.com/images/I/71R4Lkp9FJL.__AC_SX300_SY300_QL70_ML2_.jpg",
   "https://m.media-amazon.com/images/I/91qHtMyjKRS.__AC_SX300_SY300_QL70_ML2_.jpg",
-  "https://m.media-amazon.com/images/I/61ApyybbyGL.__AC_SX300_SY300_QL70_ML2_.jpg"
+  "https://m.media-amazon.com/images/I/81XEJqlvCsL.__AC_SX300_SY300_QL70_ML2_.jpg"
 ]
 
 toys.each_with_index do |toy, index|
   new_toy = Toy.new(toy)
-  file = URI.parse(toy_urls[0]).open
-  new_toy.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
+  file = URI.parse(toy_urls[index % toy_urls.length]).open
+  new_toy.photo.attach(io: file, filename: "toy_#{index + 1}.jpg", content_type: "image/jpg")
   new_toy.save!
 end
 
