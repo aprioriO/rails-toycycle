@@ -21,7 +21,7 @@
 
   <div class="mb-4 mt-4 text-center">
     <%= simple_form_for [@toy, @trade] do |f| %>
-      <%= f.association :seeker_toy, collection: current_user.toys %>
+      <%= f.association :seeker_toy, collection: current_user.toys, label: "Select Your Toy to Trade"%>
       <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
     <% end %>
   </div>
@@ -32,6 +32,7 @@
         <div class="card-body-ownerdetails">
           <h5 class="card-title-ownerinfo">Owner Info:</h5>
           <p class="card-text-owner-text"><%= @toy.user.username %></p>
+          <%= link_to "View Owner", user_path(@toy.user), class: "text-decoration-none text-primary" %>
         </div>
       </div>
     </div>

@@ -1,0 +1,13 @@
+.form-container {
+  max-width: 600px; /* Set a max-width for the form */
+  margin: 0 auto;   /* Center the form horizontally */
+  padding: 20px;    /* Add padding inside the form */
+  border: 2px solid #28a745; /* Green success border */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f8f9fa; /* Light background color for contrast */
+}
+
+/* Optional: Add some spacing above the form */
+body {
+  padding-top: 50px;
+}
