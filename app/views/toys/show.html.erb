@@ -32,6 +32,7 @@
         <div class="card-body-ownerdetails">
           <h5 class="card-title-ownerinfo">Owner Info:</h5>
           <p class="card-text-owner-text"><%= @toy.user.username %></p>
+          <%= link_to @toy.user.username, user_path(@toy.user), class: "text-decoration-none text-primary" %>
         </div>
       </div>
     </div>

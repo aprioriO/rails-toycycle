@@ -21,7 +21,7 @@ class ToysController < ApplicationController
     @toy = Toy.new(toy_params)
     @toy.user = current_user
     if @toy.save!
-      redirect_to toys_path, notice: "Toy created successfully!"
+      redirect_to @toy, notice: "Toy created successfully!"
     else
       render :new, status: :unprocessable_entity
     end
