@@ -149,6 +149,12 @@
   margin: 0;
 }
 
+.card-text-owner-text a {
+  color: #ffffff; /* White text since it's on a teal background */
+  text-decoration: none;
+  font-weight: bold;
+}
+
 .card-product p {
   font-size: 12px;
   line-height: 1.4;

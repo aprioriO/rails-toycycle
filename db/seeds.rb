@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require "open-uri"
+Trade.destroy_all
 Toy.destroy_all
 User.destroy_all
 
@@ -22,17 +23,27 @@ users = [
   { username: "fwilson7", email: "fwilson7@example.com", password: "123456", description: "A smoker with a cat and a 3-year-old who enjoys swapping toys on the app. They find it fun to keep their child’s toy collection fresh while also finding new items for their feline friend to play with." },
   { username: "gmoore8", email: "gmoore8@example.com", password: "123456", description: "A non-smoker with two kids and a rabbit. They use the app to exchange toys for their children and pet, aiming to keep their home clutter-free while finding new, engaging items. They love the sense of community bartering brings and enjoy connecting with like-minded families." }
 ]
-users.each do |user|
-  User.create!(user)
+
+
+image_urls = [
+  "https://kitt.lewagon.com/placeholder/users/cveneziani",
+  "https://kitt.lewagon.com/placeholder/users/sarahlafer",
+  "https://d26jy9fbi4q9wx.cloudfront.net/rails/active_storage/representations/proxy/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBN0tUQXc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--9d5897c3f8aba7fa7f989a773c8d31dbfb901b24/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJYW5CbkJqb0dSVlE2RTNKbGMybDZaVjkwYjE5bWFXeHNXd2hwQWNocEFjaDdCam9KWTNKdmNEb09ZWFIwWlc1MGFXOXUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--b67d9ded4d28d0969fbb98b4c21b79257705a99a/118938573_645553716334950_5443954743419152118_n.jpg",
+  "https://kitt.lewagon.com/placeholder/users/cveneziani",
+  "https://avatar.iran.liara.run/public",
+  "https://avatar.iran.liara.run/public/boy",
+  "https://avatar.iran.liara.run/public/girl",
+  "https://avatar.iran.liara.run/public/85"
+]
+
+users.each_with_index do |user,index|
+  new_user = User.new(user)
+  file = URI.parse(image_urls[index]).open
+  new_user.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
+  new_user.save!
 end
 
-
-file = URI.parse("https://kitt.lewagon.com/placeholder/users/sarahlafer").open
-first_user = User.first
-first_user.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
-first_user.save
-
-
+puts "Images assigned to all users!"
 puts "Seeded #{User.count} users"
 
 toys = [
@@ -61,8 +72,64 @@ toys = [
   { name: "Friends TV Series", user: User.all[6], category: "Action Figures & Dolls", description: "For serious collectors.", condition: "New", location: "34 Kings Road, Reading, RG1 8DN, United Kingdom", need_in_return: "Stacking Blocks", status: "Available" },
   { name: "Miniature Dollhouse", user: User.all[7], category: "Action Figures & Dolls", description: "Rainbow High Townhouse- 3-Story Wood Dollhouse Playset.", condition: "Good", location: "56 Church Street, Reading, RG4 8AU, United Kingdom", need_in_return: "Magic Maths Game", status: "Available" }
 ]
-toys.each do |toy|
-  Toy.create!(toy)
+
+
+
+toy_urls = [
+  "https://m.media-amazon.com/images/I/61ZnUquTtKL.__AC_SY300_SX300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/81GPrqGHJFL._AC_SY879_.jpg",
+  "https://m.media-amazon.com/images/I/915POA6sxYL.__AC_SX300_SY300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/815JpjZYm+L._AC_SY300_SX300_.jpg",
+  "https://m.media-amazon.com/images/I/71uuJUB5l-L.__AC_SY300_SX300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/81HnIq+TwML._AC_SY300_SX300_.jpg",
+  "https://m.media-amazon.com/images/I/71O5mdTHZRL.__AC_SX300_SY300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/81ZygYZqOKL._AC_SX679_.jpg",
+  "https://m.media-amazon.com/images/I/6161AHbJuaL.__AC_SX300_SY300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/61F6elTYLVL.__AC_SY300_SX300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/71GtoQu0klL.__AC_SX300_SY300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/618WOuZ02sL.__AC_SX300_SY300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/51eF7ymjI-L._SX342_SY445_.jpg",
+  "https://m.media-amazon.com/images/I/71kyTuFTgvL.__AC_SX300_SY300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/81-J1gTmZQL.__AC_SX300_SY300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/81aLocGAsCL.__AC_SY300_SX300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/714qFCBjOcL.__AC_SY300_SX300_QL70_ML2_.jpg",
+  "https://www.zieler.co.uk/wp-content/uploads/2019/09/09299264.png",
+  "https://m.media-amazon.com/images/I/81UhzwkL5YL.__AC_SX300_SY300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/71R4Lkp9FJL.__AC_SX300_SY300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/91qHtMyjKRS.__AC_SX300_SY300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/61ApyybbyGL.__AC_SX300_SY300_QL70_ML2_.jpg"
+]
+
+toys.each_with_index do |toy, index|
+  new_toy = Toy.new(toy)
+  file = URI.parse(toy_urls[0]).open
+  new_toy.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
+  new_toy.save!
 end
 
+# toys.each do |toy|
+#   Toy.create!(toy)
+# end
+
 puts "Seeded #{Toy.count} toys"
+
+
+
+
+# users.each_with_index do |user,index|
+#   new_user = User.new(user)
+#   file = URI.parse(image_urls[index]).open
+#   new_user.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
+#   new_user.save!
+# end
+
+# User.all.each_with_index do |user, index|
+#   image_url = image_urls[index % image_urls.length]
+#   file = URI.parse(image_url).open
+#   user.photo.attach(io: file, filename: "avatar.jpg", content_type: "image/jpg")
+# end
+
+# file = URI.parse("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg").open
+# article = Article.new(title: "NES", body: "A great console")
+# article.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+# article.save
