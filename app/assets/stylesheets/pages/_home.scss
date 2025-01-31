@@ -1,11 +1,30 @@
-// Specific CSS for your home-page
-.title {
+.landing-page {
+  height: 100vh; /* Full viewport height */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  margin-top: 40px;
+  color: white;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
 .btn-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+}
+
+.btn-landingpage {
+  margin-top: 300px;
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  border-radius: 8px;
 }
