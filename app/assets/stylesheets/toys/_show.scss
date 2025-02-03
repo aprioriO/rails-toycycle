@@ -1,57 +1,129 @@
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-h1 {
-  font-size: 36px;
-  font-weight: 700;
+.page-title {
   text-align: center;
-  color: #00CACD;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
-.card-1 {
-  border: 5px solid #00CACD;
-  border-radius: 10px;
-}
-
-.card-body-ownerdetails {
-  padding: 20px;
-  background-color: #f8f9fa;
-  display: flex;
-}
-
-.card-title-ownerinfo {
-  padding: 20px;
-  background-color: #f8f9fa;
-}
-
-.card-text-owner-text {
-  font-size: 16px;
-  padding: 20px;
-  color: #555;
-}
-
-.img-fluid {
-  border-radius: 10px 0 0 10px;
-  width: 100%;
-  height: auto;
-}
-
-.mb-4.mt-4.text-center {
   margin-top: 20px;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
-.btn-primary {
-  background-color: #00CACD;
-  border-color: #00CACD;
 
-  &:hover{
-    background-color: #009A9D;
-    border-color: #009A9D;
+.toy-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.map-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.toy-image-wrapper {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.toy-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.map-container {
+  width: 100%;
+}
+
+.map {
+  width: 100%;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.owner-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.toy-details-layout {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #d6cdf7;
+  border-radius: 12px;
+}
+
+.owner-button, .category-button {
+  overflow: hidden;
+  padding: 26px;
+  background-color: #00cacd;
+  color: black;
+  text-align: center;
+  border-radius: 10px;
+  text-decoration: none;
+  width: 100%;
+  height: 120px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: inline-grid;
+  align-items: center;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.toy-info {
+  text-align: left;
+  margin-top: 20px;
+  width: 400px; /* Match the width of the toy image */
+  word-wrap: break-word; /* Ensures text wraps */
+  align-self: center; /* Aligns with the toy image */
+  font-size: 1.1rem;
+}
+
+.trade-request-container {
+  width: 400px; /* Match the width of toy image and toy info */
+  align-self: center; /* Center horizontally */
+  text-align: center; /* Center the form contents */
+ }
+
+ .trade-request-container .btn-primary {
+  background-color: #00cacd;
+  border-color: white;
+  color: black;
+  width: 50%;
+  margin: 0 auto;
+
+  &:hover {
+    background-color: #f0f0f0;
+    border-color: #f0f0f0;
   }
+ }
+
+.owner-button:hover, .category-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.owner-links a {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+
+.owner-button div, .category-button div {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }

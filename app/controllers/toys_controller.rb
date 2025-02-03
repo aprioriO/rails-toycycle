@@ -3,6 +3,12 @@ class ToysController < ApplicationController
   def show
     @toy = Toy.find(params[:id])
     @trade = Trade.new
+
+    @markers = [{
+        lat: @toy.latitude,
+        lng: @toy.longitude,
+        marker_html: render_to_string(partial: "marker")
+      }]
   end
 
   def index
@@ -11,6 +17,18 @@ class ToysController < ApplicationController
     else
       @toys = Toy.all  # else shows ALL toys
     end
+
+    # def index
+    #   @flats = Flat.geocoded
+    #   @markers = @flats.map do |flat|
+    #     {
+    #       lat: flat.latitude,
+    #       lng: flat.longitude,
+    #       info_window_html: render_to_string(partial: "info_window", locals: {flat: flat}),
+    #       marker_html: render_to_string(partial: "marker")
+    #     }
+    #   end
+    # end
   end
 
   def new
@@ -32,4 +50,6 @@ class ToysController < ApplicationController
   def toy_params
     params.require(:toy).permit(:name, :location, :category, :description, :need_in_return, :condition, :photo)
   end
+
+
 end
