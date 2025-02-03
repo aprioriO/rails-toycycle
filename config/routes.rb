@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :trades, only: [:show]
   resources :trades do
+    resources :messages, only: [:create]
     member do
       patch :accept
       patch :reject
