@@ -16,7 +16,8 @@ class TradesController < ApplicationController
 
   def show
     @trade = Trade.find(params[:id])
-    @trades = @toy.trades.where(user: current_user)
+    @trades = Trade.where(seeker_id: current_user).or(Trade.where(trader_id: current_user))
+    @message = Message.new
   end
 
   def accept

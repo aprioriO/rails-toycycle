@@ -1,15 +1,9 @@
 <div class="container chat">
-  <h1>Your Trade for <%= @trade.restaurabookingnt.name %></h1>
-
+  <h1>Your Trade for <%= @trade.seeker_toy.name %></h1>
+  <%= turbo_stream_from "trade_#{@trade.id}_messages" %>
   <div id="messages" class="messages">
     <% @trade.messages.each do |message| %>
-      <div id="message-<%= message.id %>">
-        <small>
-          <strong><%= message.user.nickname %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= message.content %></p>
-      </div>
+      <%= render "messages/message", message: message, user: current_user %>
     <% end %>
   </div>
 </div>
@@ -18,7 +12,19 @@
   <h2>Your trades</h2>
   <ul>
     <% @trades.each do |trade| %>
-      <li><%= link_to trade.date.strftime("%a %b %e"), trade %></li>
+      <li><%= link_to trade.created_at.strftime("%a %b %e"), trade %></li>
     <% end %>
   </ul>
+<% end %>
+
+<%= simple_form_for [@trade, @message],
+  html: {class: "d-flex"} do |f|
+%>
+  <% other_user = current_user == @trade.seeker ? @trade.trader : @trade.seeker %>
+  <%= f.input :content,
+    label: false,
+    placeholder: "Message #{other_user.username}",
+    wrapper_html: {class: "flex-grow-1"}
+  %>
+  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
 <% end %>

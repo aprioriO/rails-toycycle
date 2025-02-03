@@ -3,6 +3,7 @@ class ToysController < ApplicationController
   def show
     @toy = Toy.find(params[:id])
     @trade = Trade.new
+    @trades = Trade.where(seeker_toy_id: @toy.id).or(Trade.where(trader_toy_id: @toy.id))
   end
 
   def index

@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show]
-  resources :trades, only: [:show]
+  resources :trades, only: [:show] do
+    resources :messages, only: [:new, :create]
+  end
   resources :trades do
-    resources :messages, only: [:create]
     member do
       patch :accept
       patch :reject
