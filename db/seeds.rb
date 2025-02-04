@@ -107,6 +107,7 @@ toys.each_with_index do |toy, index|
   file = URI.parse(toy_urls[index % toy_urls.length]).open
   new_toy.photo.attach(io: file, filename: "toy_#{index + 1}.jpg", content_type: "image/jpg")
   new_toy.save!
+  puts "#{Toy.count}"
 end
 
 # toys.each do |toy|
@@ -114,9 +115,6 @@ end
 # end
 
 puts "Seeded #{Toy.count} toys"
-
-
-
 
 # users.each_with_index do |user,index|
 #   new_user = User.new(user)
