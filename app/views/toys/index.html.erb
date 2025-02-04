@@ -1,48 +1,61 @@
 <div class="container">
-  <h1 class="text-left mb-4 mt-3">
-    <% if params[:category].present? %>
-      <%= params[:category] %>
-    <% else %>
-      All Toys
-    <% end %>
-  </h1>
+  <!-- Title & Category Dropdown -->
+  <div class="d-flex align-items-center mb-4">
+    <h1 class="mb-0">
+      <% if params[:category].present? %>
+        <%= params[:category] %>
+      <% else %>
+        All Toys
+      <% end %>
+    </h1>
 
-   <div class="mb-4 text-left">
-      <%= link_to toys_path do %>
-        <%= image_tag 'all_toys.png', class: 'mx-2', style: 'max-width: 100px;' %>
-      <% end %>
-      <%= link_to toys_path(category: "Educational Toys") do %>
-        <%= image_tag 'Educational.png', class: 'mx-2', style: 'max-width: 100px;' %>
-      <% end %>
-      <%= link_to toys_path(category: "Outdoor & Sports Toys") do %>
-        <%= image_tag 'Outdoor.png', class: 'mx-2', style: 'max-width: 100px;' %>
-      <% end %>
-      <%= link_to toys_path(category: "Creative & Art Toys") do %>
-        <%= image_tag 'Creative.png', class: 'mx-2', style: 'max-width: 100px;' %>
-      <% end %>
-      <%= link_to toys_path(category: "Action Figures & Dolls") do %>
-        <%= image_tag 'Dolls.png', class: 'mx-2', style: 'max-width: 100px;' %>
-      <% end %>
+    <div class="dropdown">
+      <button class="btn btn-custom dropdown-toggle" type="button" id="toyCategoriesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        Select Category
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="toyCategoriesDropdown">
+        <li><%= link_to "All Toys", toys_path, class: "dropdown-item" %></li>
+        <li><%= link_to "Educational Toys", toys_path(category: "Educational Toys"), class: "dropdown-item" %></li>
+        <li><%= link_to "Outdoor & Sports Toys", toys_path(category: "Outdoor & Sports Toys"), class: "dropdown-item" %></li>
+        <li><%= link_to "Creative & Art Toys", toys_path(category: "Creative & Art Toys"), class: "dropdown-item" %></li>
+        <li><%= link_to "Action Figures & Dolls", toys_path(category: "Action Figures & Dolls"), class: "dropdown-item" %></li>
+      </ul>
     </div>
+  </div>
 
-   <div class="row row-cols-1 row-cols-md-3 g-4">
-    <% @toys.each do |toy| %>
-      <div class="col">
-        <div class="card h-100 shadow-lg">
-          <% if toy.photo.attached? %>
-            <%= image_tag toy.photo, class: "card-img-top", alt: toy.name %>
-          <% else %>
-            <%= image_tag 'placeholder.png', class: "card-img-top", alt: toy.name %>
-          <% end %>
-          <div class="card-body d-flex flex-column h-100">
-            <h5 class="card-title"><%= toy.name %></h5>
-            <p class="card-text text-muted">
-              <%= toy.description %>
-            </p>
-            <%= link_to 'Take a look', toy_path(toy), class: 'btn btn-primary mt-auto' %>
+  <!-- Toy Cards Section -->
+  <div class="row main-container">
+    <div class="col-md-8 scrollable-content"> <!-- Adjusted width for two columns -->
+      <div class="row row-cols-1 row-cols-md-2 g-4"> <!-- Set to 2 columns -->
+        <% @toys.each_with_index do |toy, index| %>
+          <div class="col">
+            <%= link_to toy_path(toy), class: "toy-card-link" do %>
+              <div class="card toy-card" style="background-color: <%= ['#7653f5', '#f575ae', '#00cacd'][index % 3] %>;">
+                <% if toy.photo.attached? %>
+                  <%= image_tag toy.photo, class: "card-img-top", alt: toy.name %>
+                <% else %>
+                  <%= image_tag 'placeholder.png', class: "card-img-top", alt: toy.name %>
+                <% end %>
+                <div class="card-body">
+                  <h5 class="card-title text-white"><%= toy.name %></h5>
+                  <p class="card-text text-white">
+                    <%= toy.description %>
+                  </p>
+                </div>
+              </div>
+            <% end %>
           </div>
-        </div>
-     </div>
-    <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Map -->
+  <div class="floating-map-container">
+    <div class="map-container"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
 </div>

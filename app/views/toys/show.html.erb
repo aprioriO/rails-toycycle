@@ -1,51 +1,53 @@
-<div class="container">
+<div class="page-title">
   <h1><%= @toy.name %></h1>
-
-  <div class="card-1 mb-12">
-    <div class="row g-0">
-      <div class="col-md-6">
-        <%= link_to "#", class: "navbar-brand" do %>
-          <% if @toy.photo.attached? %>
-            <%= image_tag @toy.photo, class: "card-img-top img-fluid rounded photo-box", alt: @toy.name %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="col-md-6">
-        <div class="card-body">
-          <p><strong>Category:</strong> <%= @toy.category %></p>
-          <p><strong>Description:</strong> <%= @toy.description %></p>
-          <p><strong>Condition:</strong> <%= @toy.condition %></p>
-          <p><strong>Location:</strong> <%= @toy.location %></p>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
-  <div class="mb-4 mt-4 text-center">
-    <%= simple_form_for [@toy, @trade] do |f| %>
-      <%= f.association :seeker_toy, collection: current_user.toys, label: "Select Your Toy to Trade"%>
-      <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
-    <% end %>
+<div class="toy-details-layout">
+  <div class="toy-column">
+    <div class="toy-image-wrapper">
+      <% if @toy.photo.attached? %>
+        <%= image_tag @toy.photo, class: "toy-image", alt: @toy.name %>
+      <% end %>
+    </div>
+
+    <div class="toy-info">
+      <h1 class="toy-title"></h1>
+      <p><strong>Category:</strong> <%= @toy.category %></p>
+      <p><strong>Description:</strong> <%= @toy.description %></p>
+      <p><strong>Condition:</strong> <%= @toy.condition %></p>
+      <p><strong>Location:</strong> <%= @toy.location %></p>
+    </div>
+
+    <div class="trade-request-container">
+      <%= simple_form_for [@toy, @trade] do |f| %>
+        <%= f.association :seeker_toy, collection: current_user.toys, label: "Select Your Toy to Trade"%>
+        <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-6">
-      <div class="card-1 mb-3">
-        <div class="card-body-ownerdetails">
-          <h5 class="card-title-ownerinfo">Owner Info:</h5>
-          <p class="card-text-owner-text"><%= @toy.user.username %></p>
-          <%= link_to "View Owner", user_path(@toy.user), class: "text-decoration-none text-primary" %>
-        </div>
-      </div>
+  <div class="map-column">
+    <div class="map-container">
+      <div
+        data-controller="map"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        data-map-markers-value="<%= @markers.to_json %>"
+        class="map"
+      ></div>
     </div>
-    <div class="col-md-6">
-      <div class="card-1 mb-3">
-        <div class="card-body-ownerdetails">
-          <h5 class="card-title-ownerinfo">Needed in Return:</h5>
-          <p class="card-text-owner-text"><%= @toy.need_in_return %></p>
+
+    <div class="owner-links">
+      <%= link_to user_path(@toy.user), class: "owner-link" do %>
+        <div class="owner-button">
+          <h3>Check out this user:  <%= @toy.user.username %></h3>
         </div>
-      </div>
+      <% end %>
+
+      <%= link_to toys_path(category: @toy.category), class: "category-link" do %>
+        <div class="category-button">
+          <h3><%= @toy.user.username %> is looking for toys in the <%= @toy.category %> category</h3>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
