@@ -18,9 +18,27 @@
       <p><strong>Location:</strong> <%= @toy.location %></p>
     </div>
 
-    <div class="trade-request-container">
+    <%# <div class="trade-request-container">
       <%= simple_form_for [@toy, @trade] do |f| %>
-        <%= f.association :seeker_toy, collection: current_user.toys, label: "Select Your Toy to Trade"%>
+        <%#<%= f.association :seeker_toy, collection: current_user.toys, label: "Select Your Toy to Trade"%>
+        <%#<%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
+      <%#<% end %>
+    <%# </div> %>
+
+    <div class="trade-request-container">
+      <%= simple_form_for Trade.new, url: trades_path do |f| %>
+        <!-- Hidden fields to store the current toy's details -->
+        <%= f.hidden_field :trader_toy_id, value: @toy.id %>
+        <%= f.hidden_field :trader_id, value: @toy.user_id %>
+
+        <!-- Dropdown for user to select their own toy -->
+        <%= f.input :seeker_toy_id, collection: current_user.toys.where(status: "Available"),
+                    label: "Select Your Toy to Trade",
+                    prompt: "Choose a toy...",
+                    include_blank: false %>
+
+        <%= f.hidden_field :seeker_id, value: current_user.id %>
+
         <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
       <% end %>
     </div>
