@@ -7,6 +7,7 @@ class ToysController < ApplicationController
     @markers = [{
         lat: @toy.latitude,
         lng: @toy.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {toy: @toy}),
         marker_html: render_to_string(partial: "marker")
       }]
   end
@@ -18,18 +19,24 @@ class ToysController < ApplicationController
       @toys = Toy.all  # else shows ALL toys
     end
 
-    # def index
-    #   @flats = Flat.geocoded
-    #   @markers = @flats.map do |flat|
-    #     {
-    #       lat: flat.latitude,
-    #       lng: flat.longitude,
-    #       info_window_html: render_to_string(partial: "info_window", locals: {flat: flat}),
-    #       marker_html: render_to_string(partial: "marker")
-    #     }
-    #   end
-    # end
+
+    @toys = if params[:category].present?
+      Toy.where(category: params[:category])
+    else
+      Toy.all
+    end
+
+    @markers = @toys.geocoded.map do |toy|
+      {
+        lat: toy.latitude,
+        lng: toy.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {toy: toy}),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
+
   end
+
 
   def new
     @toy = Toy.new
