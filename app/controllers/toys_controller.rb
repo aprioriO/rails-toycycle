@@ -7,11 +7,8 @@ class ToysController < ApplicationController
   end
 
   def index
-    if params[:category].present?
-      @toys = Toy.where(category: params[:category])  # Filters by category
-    else
-      @toys = Toy.all  # else shows ALL toys
-    end
+    @toys = Toy.where(status: "Available")
+    @toys = @toys.where(category: params[:category]) if params[:category].present?# Filters by category
   end
 
   def new
