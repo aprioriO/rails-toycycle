@@ -46,10 +46,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_03_112357) do
     t.string "comment"
     t.integer "rating"
     t.bigint "user_id", null: false
-    t.bigint "toy_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["toy_id"], name: "index_reviews_on_toy_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -70,17 +68,13 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_03_112357) do
   end
 
   create_table "trades", force: :cascade do |t|
-    t.bigint "seeker_toy_id"
-    t.bigint "trader_toy_id"
-    t.bigint "trader_id"
-    t.bigint "seeker_id"
+    t.bigint "toy_seeker_id"
+    t.bigint "toy_trader_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "status", default: "pending", null: false
-    t.index ["seeker_id"], name: "index_trades_on_seeker_id"
-    t.index ["seeker_toy_id"], name: "index_trades_on_seeker_toy_id"
-    t.index ["trader_id"], name: "index_trades_on_trader_id"
-    t.index ["trader_toy_id"], name: "index_trades_on_trader_toy_id"
+    t.index ["toy_seeker_id"], name: "index_trades_on_toy_seeker_id"
+    t.index ["toy_trader_id"], name: "index_trades_on_toy_trader_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -108,13 +102,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_02_03_112357) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "reviews", "toys"
   add_foreign_key "reviews", "users"
   add_foreign_key "toys", "users"
-  add_foreign_key "trades", "toys", column: "seeker_toy_id"
-  add_foreign_key "trades", "toys", column: "trader_toy_id"
-  add_foreign_key "trades", "users", column: "seeker_id"
-  add_foreign_key "trades", "users", column: "trader_id"
+  add_foreign_key "trades", "toys", column: "toy_seeker_id"
+  add_foreign_key "trades", "toys", column: "toy_trader_id"
   add_foreign_key "watchlists", "toys"
   add_foreign_key "watchlists", "users"
 end

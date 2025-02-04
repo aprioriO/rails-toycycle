@@ -24,6 +24,14 @@
           <li class="nav-item">
             <%= link_to "Action Figures & Dolls", toys_path(category: "Action Figures & Dolls"), class: "nav-link" %>
           </li>
+
+          <% if user_signed_in? %>
+                <li>Hello, <%= current_user.username %>!</li>
+              <% else %>
+                <li><%= link_to 'Login', new_user_session_path %></li>
+                <li><%= link_to 'Sign up', new_user_registration_path %></li>
+              <% end %>
+
           <li class="nav-item">
             <%= link_to "Add New Toy", new_toy_path, class: "btn btn-primary ms-2" %>
           </li>
