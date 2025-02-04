@@ -1,13 +1,26 @@
 <div class="trade-details">
   <h3>Trade Details</h3>
-  <div class="d-flex align-items-center gap-3">
-    <%= image_tag @trade.seeker_toy.photo, class: "toy-image rounded" if @trade.seeker_toy.photo.attached? %>
-    <div>
-      <h5><%= @trade.seeker_toy.name %></h5>
-      <p><strong>Condition:</strong> <%= @trade.seeker_toy.condition %></p>
-      <p><strong>Requested by:</strong> <%= @trade.seeker.username %></p>
+  <% if current_user == @trade.seeker %>
+    <!-- Seeker sees the trader's toy -->
+    <div class="d-flex align-items-center gap-3">
+      <%= image_tag @trade.seeker_toy.photo, class: "toy-image rounded" if @trade.seeker_toy.photo.attached? %>
+      <div>
+        <h5><%= @trade.seeker_toy.name %></h5>
+        <p><strong>Condition:</strong> <%= @trade.seeker_toy.condition %></p>
+        <p><strong>Requested by:</strong> <%= @trade.seeker.username %></p>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <!-- Trader sees the seeker's toy -->
+    <div class="d-flex align-items-center gap-3">
+      <%= image_tag @trade.trader_toy.photo, class: "toy-image rounded" if @trade.trader_toy.photo.attached? %>
+      <div>
+        <h5><%= @trade.trader_toy.name %></h5>
+        <p><strong>Condition:</strong> <%= @trade.trader_toy.condition %></p>
+        <p><strong>Requested by:</strong> <%= @trade.trader.username %></p>
+      </div>
+    </div>
+  <% end %>
 
   <div class="mt-2">
     <%= button_to "Accept", accept_trade_path(@trade), method: :patch, class: "btn btn-success btn-sm mx-1" %>
