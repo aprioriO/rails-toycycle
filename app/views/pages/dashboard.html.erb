@@ -10,13 +10,14 @@
       <% if current_user.trades_as_seeker.any? %>
         <div class="row">
           <% current_user.trades_as_seeker.each do |trade| %>
-            <div class="card mb-3 p-2">
-              <div class="card-body d-flex align-items-center justify-content-between">
-                <h5 class="card-title"><%= trade.trader_toy.name %></h5>
-                <p class="card-text"><strong>Status:</strong> <%= trade.status.capitalize %></p>
-                <a href="<%= toy_path(trade.trader_toy) %>" class="btn btn-primary btn-sm">View Toy</a>
+            <%= link_to trade_path(trade), class: "text-decoration-none text-dark" do %>
+              <div class="card mb-3 p-2">
+                <div class="card-body d-flex align-items-center justify-content-between">
+                  <h5 class="card-title"><%= trade.trader_toy.name %></h5>
+                  <p class="card-text"><strong>Status:</strong> <%= trade.status.capitalize %></p>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
       <% else %>
@@ -34,17 +35,14 @@
       <% if current_user.trades_as_trader.any? %>
         <div class="row">
           <% current_user.trades_as_trader.each do |trade| %>
-            <div class="card mb-3 p-2">
-              <div class="card-body d-flex align-items-center justify-content-between">
-                <h5 class="card-title">A user seeking <%= trade.seeker_toy.name %> would like to trade for <%= trade.trader_toy.name %></h5>
-                <p class="card-text"><strong>Status:</strong> <%= trade.status.capitalize %></p>
-                <div>
-                  <%= button_to "Accept", accept_trade_path(trade), method: :patch, class: "btn btn-success btn-sm mx-1" %>
-                  <%= button_to "Reject", reject_trade_path(trade), method: :patch, class: "btn btn-danger btn-sm mx-1" %>
+            <%= link_to trade_path(trade), class: "text-decoration-none text-dark" do %>
+              <div class="card mb-3 p-2">
+                <div class="card-body d-flex align-items-center justify-content-between">
+                  <h5 class="card-title">A user seeking <%= trade.seeker_toy.name %> would like to trade for <%= trade.trader_toy.name %></h5>
+                  <p class="card-text"><strong>Status:</strong> <%= trade.status.capitalize %></p>
                 </div>
-                <a href="<%= toy_path(trade.seeker_toy) %>" class="btn btn-primary btn-sm">View Toy</a>
               </div>
-            </div>
+            <% end %>
           <% end %>
         </div>
       <% else %>

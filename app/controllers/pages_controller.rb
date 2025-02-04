@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-
+    @trades = Trade.where("seeker_id = ? OR trader_id = ?", current_user.id, current_user.id)
   end
 
 end

@@ -16,16 +16,28 @@ class TradesController < ApplicationController
 
   def show
     @trade = Trade.find(params[:id])
-    @trades = @toy.trades.where(user: current_user)
+    @trades = Trade.where(seeker_id: current_user).or(Trade.where(trader_id: current_user))
+    @message = Message.new
   end
 
   def accept
-    @trade.update(status: "accepted")
+    if @trade.update(status: "accepted")
+      # Mark both toys as unavailable
+      @trade.seeker_toy.update(status: "unavailable")
+      @trade.trader_toy.update(status: "unavailable")
+      flash[:notice] = "Trade accepted!"
+    else
+      flash[:alert] = "Something went wrong."
+    end
     redirect_to dashboard_path, notice: "Trade accepted."
   end
 
   def reject
-    @trade.update(status: "rejected")
+    if @trade.update(status: :rejected)
+      flash[:notice] = "Trade rejected!"
+    else
+      flash[:alert] = "Something went wrong."
+    end
     redirect_to dashboard_path, alert: "Trade rejected."
   end
 
