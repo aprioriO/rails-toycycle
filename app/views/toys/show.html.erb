@@ -29,15 +29,6 @@
     <% end %>
   </div>
 
-  <% if @trades.exists? %>
-    <h2>Your trades</h2>
-    <ul>
-      <% @trades.each do |trade| %>
-        <li><%= link_to trade.created_at.strftime("%a %b %e"), trade %></li>
-      <% end %>
-    </ul>
-  <% end %>
-
   <div class="row">
     <div class="col-md-6">
       <div class="card-1 mb-3">

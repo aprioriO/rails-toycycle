@@ -1,3 +1,18 @@
+.trade-details {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+
+  .toy-image {
+    width: 80px; /* Small toy image */
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+}
+
+
 .chat {
   background: white;
   margin-top: 9px;

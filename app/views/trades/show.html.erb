@@ -1,3 +1,21 @@
+<div class="trade-details">
+  <h3>Trade Details</h3>
+  <div class="d-flex align-items-center gap-3">
+    <%= image_tag @trade.seeker_toy.photo, class: "toy-image rounded" if @trade.seeker_toy.photo.attached? %>
+    <div>
+      <h5><%= @trade.seeker_toy.name %></h5>
+      <p><strong>Condition:</strong> <%= @trade.seeker_toy.condition %></p>
+      <p><strong>Requested by:</strong> <%= @trade.seeker.username %></p>
+    </div>
+  </div>
+
+  <div class="mt-2">
+    <%= button_to "Accept", accept_trade_path(@trade), method: :patch, class: "btn btn-success btn-sm mx-1" %>
+    <%= button_to "Reject", reject_trade_path(@trade), method: :patch, class: "btn btn-danger btn-sm mx-1" %>
+  </div>
+</div>
+
+
 <div class="container chat">
   <h1>Your Trade for <%= @trade.seeker_toy.name %></h1>
   <%= turbo_stream_from "trade_#{@trade.id}_messages" %>
@@ -7,15 +25,6 @@
     <% end %>
   </div>
 </div>
-
-<% if @trades.exists? %>
-  <h2>Your trades</h2>
-  <ul>
-    <% @trades.each do |trade| %>
-      <li><%= link_to trade.created_at.strftime("%a %b %e"), trade %></li>
-    <% end %>
-  </ul>
-<% end %>
 
 <%= simple_form_for [@trade, @message],
   html: {class: "d-flex"} do |f|
