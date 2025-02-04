@@ -18,7 +18,10 @@ Rails.application.routes.draw do
     resources :trades, only: [:create]
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    resources :reviews, only: [:create]
+  end
+
   resources :trades, only: [:show]
   resources :trades do
     member do
