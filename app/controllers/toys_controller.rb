@@ -13,11 +13,11 @@ class ToysController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }]
   end
-  
+
   def index
     @toys = Toy.where(status: "Available")
     @toys = @toys.where(category: params[:category]) if params[:category].present?# Filters by category
-    
+
     @markers = @toys.geocoded.map do |toy|
       {
         lat: toy.latitude,

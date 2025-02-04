@@ -1,204 +1,234 @@
-/* Main container */
+/* Base styles */
+:root {
+  --primary-color: #00cacd;
+  --text-dark: black;
+  --text-light: black;
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --border-radius: 20px;
+  --card-padding: 2rem;
+  --spacing: 2rem;
+}
+
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: var(--spacing);
   font-family: 'Arial', sans-serif;
 }
 
-/* User profile section */
-.user-profile {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-left: 30px;
-  margin-right: 30px;
-  padding: 15px;
-  background-color: #00cacd;
-  // border-radius: 12px;
-  padding: 2rem;
-  // box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
-  display: flex;
-  gap: 2rem;
+/* Grid Layout */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 350px 0.7fr;
+  gap: var(--spacing);
+  justify-content: center;
+  align-items: stretch; /* Ensure both columns stretch to the same height */
 }
 
-// .user-profile:hover {
-//   transform: translateY(-5px);
-//   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-// }
-/* User name */
-.user-name h1 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 1.5rem;
-  font-weight: 600;
+/* Left Column */
+.profile-left {
+
+  top: var(--spacing);
+  height: fit-content;
 }
 
-/* User image */
+.profile-card {
+  background: #00cacd;
+  border-radius: var(--border-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow-sm);
+}
+
 .user-image {
-  flex-shrink: 0;
-  width: 300px;
+  text-align: center;
+  margin: -1rem -1rem 1.5rem -1rem;
 }
 
 .user-image img {
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   object-fit: cover;
-  transition: transform 0.3s ease;
+  box-shadow: var(--shadow-md);
 }
 
-// .user-image img:hover {
-//   transform: scale(1.02);
-// }
-
-/* User description */
-.user-description {
-  flex-grow: 1;
-  background-color: #f8f9fa;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 1.5rem;
-  border-radius: 8px;
-  margin: 1.5rem 0;
+.user-name {
+  text-align: center;
 }
 
-// .user-description:hover {
-//   transform: translateY(-5px);
-//   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-// }
-
-.user-description p {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #555;
-}
-
-/* Bottom sections container */
-.bottom-sections {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-
-/* User rating and reviews - each takes up half the space */
-.user-rating,
-.user-reviews {
-  flex: 1;
-  min-width: calc(50% - 1rem);
-  background-color: #ffffff;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding: 1.5rem;
-  border-radius: 12px;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-// .user-rating:hover {
-//   transform: translateY(-5px);
-//   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-// }
-
-.user-rating p {
-  font-size: 1.2rem;
-  color: #444;
-  font-weight: 500;
-}
-
-.user-reviews h2 {
+.user-name h1 {
   font-size: 1.8rem;
-  color: #333;
+  color: var(--text-dark);
   margin-bottom: 1.5rem;
-  font-weight: 600;
 }
 
-// .user-reviews:hover {
-//   transform: translateY(-5px);
-//   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-// }
+.user-description {
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid black;
+}
 
+.user-rating-summary {
+  text-align: center;
+}
+
+.user-rating-summary h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.rating-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stars {
+  font-size: 1.2rem;
+}
+
+.rating-text {
+  font-weight: bold;
+  color: var(--text-dark);
+}
+
+.review-count {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+/* Right Column */
+.content-card {
+  background: #7653f5;
+  border-radius: var(--border-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--shadow-sm);
+}
+
+.content-section {
+  padding: 2rem 0;
+  color: white
+}
+
+.content-section:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+.content-section h2 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Toys Grid */
+.toys-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .card-product {
-  overflow: hidden;
-  height: 120px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: #7653f5;
+  border-radius: 15px;
+  padding: 1rem;
   display: flex;
-  align-items: center;
-  border-radius: 12px;
+  gap: 1rem;
+  transition: transform 0.2s ease;
 }
 
 .card-product:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
 }
 
 .card-product img {
-  height: 100%;
   width: 120px;
+  height: 120px;
+  border-radius: 10px;
   object-fit: cover;
 }
 
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
+.card-product-infos {
+  flex: 1;
 }
 
-.card-text-owner-text a {
-  color: #ffffff; /* White text since it's on a teal background */
-  text-decoration: none;
-  font-weight: bold;
+/* Reviews */
+.review {
+  padding: 1rem 0;
 }
 
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
+.review:not(:last-child) {
+  border-bottom: 1px solid #eee;
 }
 
-.card-product .card-product-infos {
-  padding: 16px;
+.rating {
+  margin-top: 0.5rem;
 }
 
-.card-product {
-  margin-bottom: 20px; /* Adds space between the containers */
+/* Review Form */
+.review-form {
+  max-width: 600px;
+  color: white;
 }
 
-/* Responsive design */
+.btn-primary {
+  background: #f575ae;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-left {
+    position: static;
+  }
+
+  .profile-card,
+  .content-card {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 1rem;
   }
 
-  .user-profile {
+  .card-product {
     flex-direction: column;
     align-items: center;
-  }
-
-  .user-image {
-    width: 200px;
-  }
-
-  .user-image img {
-    width: 200px;
-    height: 200px;
-  }
-
-  .user-name h1 {
-    font-size: 2rem;
     text-align: center;
   }
 
-  .user-rating,
-  .user-reviews {
-    min-width: 100%;
+  .card-product img {
+    width: 100%;
+    max-width: 200px;
+    height: 200px;
   }
+}
 
+a {
+  color: black !important;
+  text-decoration: none;
+}
+
+a {
+  color: white !important;
+  text-decoration: none;
 }

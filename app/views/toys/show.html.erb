@@ -20,7 +20,7 @@
 
     <div class="trade-request-container">
       <%= simple_form_for [@toy, @trade] do |f| %>
-        <%= f.association :seeker_toy, collection: current_user.toys, label: "Select Your Toy to Trade"%>
+        <%# <%= f.association :seeker_toy, collection: current_user.toys, label: "Select Your Toy to Trade"%> %>
         <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
       <% end %>
     </div>
