@@ -14,7 +14,9 @@ class ToysController < ApplicationController
       }]
   end
 
+
   def index
+
     @toys = Toy.where(status: "Available")
     @toys = @toys.where(category: params[:category]) if params[:category].present?# Filters by category
 
@@ -26,6 +28,11 @@ class ToysController < ApplicationController
         marker_html: render_to_string(partial: "marker")
       }
     end
+
+    if params[:query].present?
+      @toys = @toys.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
   end
 
   def new
