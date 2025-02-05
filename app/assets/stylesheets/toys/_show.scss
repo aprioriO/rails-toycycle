@@ -52,6 +52,12 @@
   gap: 20px;
 }
 
+.owner-links a {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+
 .toy-details-layout {
   display: flex;
   gap: 40px;
@@ -115,7 +121,7 @@
 
 .owner-links a {
   text-decoration: none;
-  color: inherit;
+  color: black;
   width: 100%;
 }
 
