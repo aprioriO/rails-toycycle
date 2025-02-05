@@ -11,7 +11,7 @@
         <div class="row-dashboard">
           <% current_user.trades_as_seeker.each do |trade| %>
             <%= link_to trade_path(trade), class: "text-decoration-none text-dark" do %>
-              <div class="card-seekingtoys">
+              <div class="card-seekingtoys mb-3 p-2">
                 <div class="card-seekingtoy-info d-flex align-items-center justify-content-between">
                   <h5 class="card-seekingtoy-title"><%= trade.trader_toy.name %></h5>
                   <p class="card-status-text"><strong>Status:</strong> <%= trade.status.capitalize %></p>
