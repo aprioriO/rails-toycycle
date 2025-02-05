@@ -5,12 +5,18 @@ class ToysController < ApplicationController
     @trade = Trade.new
   end
 
+
   def index
+    @toys = Toy.all
+
     if params[:category].present?
       @toys = Toy.where(category: params[:category])  # Filters by category
-    else
-      @toys = Toy.all  # else shows ALL toys
     end
+
+    if params[:query].present?
+      @toys = @toys.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
   end
 
   def new
