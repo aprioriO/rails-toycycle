@@ -50,7 +50,7 @@
           </li>
           <li class="nav-icon dropdown">
             <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fa-solid fa-user avatar me-5" alt="dropdown menu"></i>
+             <img src="<%= current_user.photo.attached? ? url_for(current_user.photo) : 'default_avatar.jpg' %>" class="avatar me-5 rounded-circle" alt="User Avatar" style="width: 40px; height: 40px;">
             </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 

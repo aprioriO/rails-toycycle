@@ -1,59 +1,27 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  padding: 5px 50px; /* Adjust padding for a more compact navbar */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow for depth */
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
+/* Navbar Brand Logo */
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 150px;  /* Increase size for better visibility */
+  height: auto;
 }
 
-
-// .nav-item {
-//   text-align: center;
-//   display: inline-block;  /* Makes each link behave like a button */
-//   margin: 5px;           /* Adds space between buttons */
+// .navbar-lewagon .navbar-collapse {
+//   flex-grow: 0;
 // }
 
-// .nav-item a {
-//   display: inline-block;
-//   padding: 10px 20px;     /* Adjust padding to make the button look nice */
-//   text-align: center;     /* Center the text */
-//   text-decoration: none;
-//   border-radius: 8px;
-//   font-weight: bold;
-//   color: white;           /* Text color */
-//   transition: background-color 0.3s ease; /* Smooth transition */
-// }
-
-// /* Different colors for each button */
-// .btn-educational {
-//   background-color: #007bff; /* Blue */
-// }
-
-// .btn-outdoor {
-//   background-color: #28a745; /* Green */
-// }
-
-// .btn-creative {
-//   background-color: #ffc107; /* Yellow */
-// }
-
-// .btn-action {
-//   background-color: #dc3545; /* Red */
-// }
-
-// /* Hover effects */
-// .nav-item a:hover {
-//   opacity: 0.8;
+// .navbar-lewagon .navbar-brand img {
+//   width: 40px;
 // }
 
 
 .navbar {
-  border-bottom: 25px solid #7653F5; /* Adjust thickness and color */
+  border-bottom: 15px solid #7653F5; /* Adjust thickness and color */
 }
 
 .navbar .btn-primary {
@@ -66,3 +34,43 @@
     background-color: #008B8E; /* Darker shade on hover */
   }
 }
+
+
+    // .nav-item {
+    //   text-align: center;
+    //   display: inline-block;  /* Makes each link behave like a button */
+    //   margin: 5px;           /* Adds space between buttons */
+    // }
+
+    // .nav-item a {
+    //   display: inline-block;
+    //   padding: 10px 20px;     /* Adjust padding to make the button look nice */
+    //   text-align: center;     /* Center the text */
+    //   text-decoration: none;
+    //   border-radius: 8px;
+    //   font-weight: bold;
+    //   color: white;           /* Text color */
+    //   transition: background-color 0.3s ease; /* Smooth transition */
+    // }
+
+    // /* Different colors for each button */
+    // .btn-educational {
+    //   background-color: #007bff; /* Blue */
+    // }
+
+    // .btn-outdoor {
+    //   background-color: #28a745; /* Green */
+    // }
+
+    // .btn-creative {
+    //   background-color: #ffc107; /* Yellow */
+    // }
+
+    // .btn-action {
+    //   background-color: #dc3545; /* Red */
+    // }
+
+    // /* Hover effects */
+    // .nav-item a:hover {
+    //   opacity: 0.8;
+    // }
