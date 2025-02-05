@@ -19,8 +19,9 @@
     </div>
 
     <div class="trade-request-container">
-      <%= simple_form_for [@toy, @trade] do |f| %>
-        <%= f.association :seeker_toy, collection: current_user.toys, label: "Select Your Toy to Trade"%>
+      <%= simple_form_for [@toy, @trade], url: toy_trades_path(@toy), html: { data: { turbo: false } } do |f| %>
+        <%= f.hidden_field :toy_id, value: @toy.id %>  <!-- Ensures toy_id is sent -->
+        <%= f.association :seeker_toy, collection: current_user.toys, label: "Select Your Toy to Trade" %>
         <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
       <% end %>
     </div>
