@@ -2,7 +2,7 @@
 .container-dashboard {
   width: 80%; /* Takes 80% of the page */
   height: 80%; /* Adjusted for vertical spacing */
-  background-color: white;
+  background-color: #7653F5;
   padding: 20px;
   border-radius: 10px;
   display: flex;
@@ -15,7 +15,7 @@
 /* Card Styles */
 .card-dashboard {
   width: 100%;
-  background-color: #ffffff;
+  background-color: #7653F5;
   border-radius: 10px;
   padding: 15px;
   border: 1px solid #ddd;
@@ -24,7 +24,7 @@
 
 /* Header Styles */
 .card-header-h1 {
-  background-color: #f1f1f1;
+  background-color: #00CACD;
   padding: 10px;
   font-weight: bold;
   border-radius: 10px 10px 0 0;
@@ -33,26 +33,34 @@
 
 /* Row Styles */
 .row-dashboard {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  width: 70%; /* Takes 70% of the page */
-  margin: 0 auto; /* Centers the row */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center align the cards */
+  width: 100%;
+}
+
+.toy-image-avatar {
+  width: 50px; /* Adjust image size */
+  height: 50px;
+  border-radius: 8px; /* Slightly rounded corners */
+  object-fit: cover; /* Ensures the image covers the area properly */
+  margin-right: 10px; /* Spacing between image and text */
 }
 
 /* Styling for card-seekingtoy-info */
-.card-seekingtoy-info {
+.card-seekingtoy-info, .card-tradingtoy-info {
+  width: 100%; /* Ensure cards take full width of parent */
+  text-align: center;
   display: flex; /* Using Flexbox for alignment */
   justify-content: space-between; /* Distributes space between child elements */
   align-items: center; /* Centers content vertically */
   padding: 10px; /* Padding inside the card */
-  background-color: #ffffff; /* White background */
+  background-color: white; /* White background */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visual appeal */
   transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
 }
 
-.card-seekingtoy-info:hover {
+.card-seekingtoy-info:hover, .card-tradeingtoy-info:hover {
   transform: scale(1.02); /* Slight scaling effect on hover */
   background-color: #f8f9fa; /* Light background change on hover */
 }
@@ -81,5 +89,6 @@
 
   .card-dashboard {
     padding: 10px;
+    margin: 0 auto; /* Centers the card horizontally */
   }
 }
