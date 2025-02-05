@@ -1,0 +1,92 @@
+/* Container Styles */
+.container-dashboard {
+  width: 80%; /* Takes 80% of the page */
+  height: 80%; /* Adjusted for vertical spacing */
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 auto; /* Centers the container */
+}
+
+/* Card Styles */
+.card-dashboard {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+}
+
+/* Header Styles */
+.card-header-h1 {
+  background-color: #f1f1f1;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 10px 10px 0 0;
+  text-align: center;
+}
+
+/* Row Styles */
+.row-dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  width: 70%; /* Takes 70% of the page */
+  margin: 0 auto; /* Centers the row */
+}
+
+/* Toy Info Cards */
+.card-seekingtoy-info,
+.card-tradingtoy-info {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  width: 100%; /* Ensures the card takes up full width inside row */
+}
+
+.card-seekingtoy-info:hover,
+.card-tradingtoy-info:hover {
+  transform: scale(1.02);
+  background-color: #f8f9fa;
+}
+
+/* Equal Distribution of Contents */
+.card-seekingtoy-info {
+  display: flex;
+  justify-content: space-between; /* Distribute content equally */
+  align-items: center;
+}
+
+.card-seekingtoy-title,
+.card-status-text {
+  font-weight: bold;
+  color: #333;
+}
+
+/* Status Text */
+.card-status-text {
+  font-weight: bold;
+  color: #555;
+}
+
+/* Responsive Design (Optional) */
+@media (max-width: 768px) {
+  .container-dashboard {
+    width: 90%;
+  }
+
+  .row-dashboard {
+    width: 100%;
+  }
+
+  .card-dashboard {
+    padding: 10px;
+  }
+}

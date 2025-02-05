@@ -8,9 +8,12 @@ class TradesController < ApplicationController
     @trade.trader = @toy.user
     @trade.seeker = current_user
     if @trade.save
-      redirect_to dashboard_path
+      Rails.logger.debug "✅ Trade created successfully!"
+      redirect_to dashboard_path, notice: "Trade request sent!"
     else
-      render "toys/show"
+      Rails.logger.debug "❌ Trade creation failed: #{@trade.errors.full_messages}"
+      flash[:alert] = "Failed to request trade: #{@trade.errors.full_messages.join(', ')}"
+      render "toys/show", status: :unprocessable_entity
     end
   end
 
