@@ -153,6 +153,7 @@
 
 .card-product-infos {
   flex: 1;
+  color: white;
 }
 
 /* Reviews */
@@ -224,11 +225,11 @@
 }
 
 a {
-  color: black !important;
+  color: black (214, 10, 10) !important;
   text-decoration: none;
 }
 
-a {
-  color: white !important;
-  text-decoration: none;
-}
+// a {
+//   color: white !important;
+//   text-decoration: none;
+// }
