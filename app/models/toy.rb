@@ -7,4 +7,7 @@ class Toy < ApplicationRecord
   validates :name, :location, :category, :description, :condition, :need_in_return, presence: true
 
   has_one_attached :photo
+
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 end
