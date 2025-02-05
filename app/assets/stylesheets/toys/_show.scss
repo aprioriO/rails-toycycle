@@ -89,7 +89,28 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Owner and Category Buttons */
+.owner-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.owner-links a {
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+}
+
+.toy-details-layout {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: #7653f5;
+  border-radius: 12px;
+}
+
 .owner-button, .category-button {
   background-color: #7653f5; /* Set to the desired color */
   color: white;
@@ -117,7 +138,9 @@
 
 .owner-links a {
   text-decoration: none;
-  color: inherit;
+
+  color: black;
+  width: 100%;
 }
 
 .owner-button div, .category-button div {

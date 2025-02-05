@@ -1,59 +1,91 @@
-<div class = "container">
-  <div class="user-profile">
-    <div class="user-image">
-      <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
-    </div>
-
-    <div class="profile-content">
-      <div class="user-name">
-    <!-- Display the user's name -->
-        <h1><%= @user.username %></h1>
-    </div>
-
-    <div class="user-description">
-        <p><%= @user.description %></p>
-    </div>
-    </div>
-  </div>
-
-  <h2>Toys available to trade:</h2>
-    <% @toys.each do |toy| %>
-      <%= link_to toy_path(toy) do %>
-        <div class="card-product">
-          <img src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=" />
-          <div class="card-product-infos">
-              <h3><%=toy.name%><h3>
-              <p><%= toy.description %><p>
-              <p><strong>Is seeking:</strong> <%= toy.need_in_return %></p>
-            </div>
+<div class="container">
+  <div class="profile-grid">
+    <!-- Left Column -->
+    <div class="profile-left">
+      <div class="profile-card">
+        <div class="user-image">
+          <%= cl_image_tag @user.photo.key, alt: @user.username %>
         </div>
-      <% end %>
-    <% end %>
+        <div class="user-name">
+          <h1><%= @user.username %></h1>
+        </div>
+        <div class="user-description">
+          <p><%= @user.description %></p>
+        </div>
+        <div class="user-rating-summary">
+          <h2>Overall Rating</h2>
+          <div class="rating-display">
+            <% if @user.reviews.any? %>
+              <% average_rating = @user.reviews.average(:rating).round(1) %>
+              <div class="stars">
+                <% average_rating.floor.times do %>
+                  <i class="fas fa-star" style="color: gold;"></i>
+                <% end %>
+                <% if average_rating % 1 >= 0.5 %>
+                  <i class="fas fa-star-half-alt" style="color: gold;"></i>
+                <% end %>
+                <% (5 - average_rating.ceil).times do %>
+                  <i class="far fa-star" style="color: gold;"></i>
+                <% end %>
+              </div>
+              <p class="rating-text"><%= average_rating %> out of 5</p>
+              <p class="review-count">(<%= @user.reviews.count %> reviews)</p>
+            <% else %>
+              <p>No reviews yet</p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <h1>Leave a Review</h1>
-  <div class="user-rating">
-  <%= simple_form_for [@user, @review] do |f| %>
-    <%= f.input :comment %>
-    <%= f.input :rating, collection: 1..5 %>
-    <%= f.submit "Submit review", class: "btn btn-primary" %>
-  <% end %>
+    <!-- Right Column -->
+    <div class="profile-right">
+      <div class="content-card">
+        <div class="content-section">
+          <h2>Toys available to trade:</h2>
+          <div class="toys-grid">
+            <% @toys.each do |toy| %>
+              <%= link_to toy_path(toy), class: "toy-link" do %>
+                <article class="card-product">
+                  <% if toy.photo.attached? %>
+                    <%= cl_image_tag toy.photo.key, height: 120, width: 120, crop: :fill, alt: toy.name %>
+                  <% else %>
+                    <img src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=" alt="<%= toy.name %> placeholder" />
+                  <% end %>
+                  <div class="card-product-infos">
+                    <h3><%= toy.name %></h3>
+                    <p><%= toy.description %></p>
+                    <p><strong>Is seeking:</strong> <%= toy.need_in_return %></p>
+                  </div>
+                </article>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <h2>Reviews</h2>
+          <div class="user-reviews">
+            <% @user.reviews.each do |review| %>
+              <article class="review">
+                <p><%= review.comment %></p>
+                <hr>
+              </article>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="content-section">
+          <h2>Leave a Review</h2>
+          <div class="review-form">
+            <%= simple_form_for [@user, @review] do |f| %>
+              <%= f.input :comment %>
+              <%= f.input :rating, collection: 1..5 %>
+              <%= f.submit "Submit review", class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <h2>Reviews</h2>
-  <div class="user-reviews">
-    <% @user.reviews.each do | review| %>
-      <p><%= review.comment %></p>
-      <p>
-        <% review.rating.times do %>
-          <i class="fas fa-star" style="color: gold;"></i> <!-- Filled star -->
-        <% end %>
-
-        <% (5 - review.rating).times do %>
-          <i class="far fa-star" style="color: gold;"></i> <!-- Empty star -->
-        <% end %>
-      </p>
-      <p>--------------------</p>
-    <% end %>
-  </div>
-
 </div>
