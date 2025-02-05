@@ -44,7 +44,7 @@
         <div class="content-section">
           <h2>Toys available to trade:</h2>
           <div class="toys-grid">
-            <% @toys.each do |toy| %>
+            <% @toys.where(status: "Available").each do |toy| %>  <!-- Only show available toys -->
               <%= link_to toy_path(toy), class: "toy-link" do %>
                 <article class="card-product">
                   <% if toy.photo.attached? %>
