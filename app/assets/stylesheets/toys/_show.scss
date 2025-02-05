@@ -1,29 +1,35 @@
-/* Layout */
+/* Main Layout */
+.page-title {
+  text-align: left; /* Centers text horizontally */
+  margin-top: 40px;
+  margin-left: 8%;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: left; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  width: 100%;
+}
+
+
 .toy-details-layout {
   display: flex;
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px;
-  background-color: #f7f7f7;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.toy-column, .map-column {
+/* Left Column (Toy Card) */
+.toy-column {
   flex: 1;
-}
-
-
-
-/* Toy Card */
-.toy-card {
-  background-color: #00cacd; /* Updated to the desired color */
+  background-color: #00cacd; /* Updated color */
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Toy Image */
 .toy-image-wrapper {
   background: rgba(255, 255, 255, 0.2);
   padding: 10px;
@@ -40,112 +46,87 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Toy Title */
+.toy-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+/* Toy Info */
 .toy-info {
   margin-top: 20px;
   font-size: 1.1rem;
   word-wrap: break-word;
 }
 
+/* Trade Request Button */
 .trade-request-container {
   text-align: center;
   margin-top: 20px;
 }
 
-/* Trade Request Button */
 .trade-request-container .btn-primary {
-  background-color: #f575ae; /* Set the color */
-  border-color: #f575ae; /* Match the border color to the background */
-  color: white; /* Set text color to white */
+  background-color: #f575ae;
+  border-color: #f575ae;
+  color: white;
   width: 50%;
   margin: 0 auto;
   padding: 12px 20px;
-  border-radius: 20px; /* Rounded edges */
+  border-radius: 20px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .trade-request-container .btn-primary:hover {
-  background-color: #e54c90; /* Slightly darker shade on hover */
-  border-color: #e54c90; /* Match the border color on hover */
+  background-color: #e54c90;
+  border-color: #e54c90;
 }
 
-/* Right Card */
-.right-card {
-  background-color: #7653f5; /* Set to the desired color */
+/* Right Column (Map & Cards) */
+.map-column {
+  flex: 1;
+  background-color: #7653f5;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  height: 900px
 }
 
 /* Map */
 .map-container {
   width: 100%;
-  margin-bottom: 20px;
+  height: 600px; /* Fixed height */
+  margin-bottom: 20px; /* Remove negative margins */
 }
 
 .map {
   width: 100%;
-  height: 500px;
+  height: 100%; /* Ensures it fills the container */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Owner & Category Cards */
 .owner-links {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.owner-links a {
-  text-decoration: none;
-  color: inherit;
-  width: 100%;
-}
-
-.toy-details-layout {
-  display: flex;
-  gap: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px;
-  background-color: #7653f5;
-  border-radius: 12px;
-}
-
 .owner-button, .category-button {
-  background-color: #7653f5; /* Set to the desired color */
+  background-color: #7653f5;
   color: white;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
   text-decoration: none;
   display: block;
-  margin-bottom: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .owner-button:hover, .category-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Layout for Spacing */
-.owner-links {
-  display: flex;
-  flex-direction: column;
-  gap: 30px; /* Increased spacing */
-}
-
-.owner-links a {
-  text-decoration: none;
-
-  color: black;
-  width: 100%;
-}
-
-.owner-button div, .category-button div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
 }
