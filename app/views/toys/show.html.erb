@@ -3,56 +3,59 @@
 </div>
 
 <div class="toy-details-layout">
-  <div class="toy-column">
-    <div class="toy-card">
-      <div class="toy-image-wrapper">
-        <% if @toy.photo.attached? %>
-          <%= image_tag @toy.photo, class: "toy-image", alt: @toy.name %>
-        <% end %>
-      </div>
-
-      <div class="toy-info">
-        <h1 class="toy-title"></h1>
-        <p><strong>Category:</strong> <%= @toy.category %></p>
-        <p><strong>Description:</strong> <%= @toy.description %></p>
-        <p><strong>Condition:</strong> <%= @toy.condition %></p>
-        <p><strong>Location:</strong> <%= @toy.location %></p>
-      </div>
-
-
-    <div class="trade-request-container">
-      <%= simple_form_for [@toy, @trade], url: toy_trades_path(@toy), html: { data: { turbo: false } } do |f| %>
-        <%= f.hidden_field :toy_id, value: @toy.id %>  <!-- Ensures toy_id is sent -->
-        <%= f.association :seeker_toy, collection: current_user.toys, label: "Select Your Toy to Trade" %>
-        <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
+  <!-- Left Column (Toy Image, Description, Trade Request) -->
+  <div class="toy-column toy-card">
+    <div class="toy-image-wrapper">
+      <% if @toy.photo.attached? %>
+        <%= image_tag @toy.photo, class: "toy-image", alt: @toy.name %>
       <% end %>
+    </div>
+
+    <!-- Toy Title -->
+    <h2 class="toy-title"><%= @toy.name %></h2>
+
+    <div class="toy-info">
+      <p><strong>Category:</strong> <%= @toy.category %></p>
+      <p><strong>Description:</strong> <%= @toy.description %></p>
+      <p><strong>Condition:</strong> <%= @toy.condition %></p>
+      <p><strong>Location:</strong> <%= @toy.location %></p>
+    </div>
+
+    <!-- Trade Request -->
+    <div class="trade-request-container">
+    <%= simple_form_for [@toy, @trade], url: toy_trades_path(@toy), html: { data: { turbo: false } } do |f| %>
+      <%= f.hidden_field :toy_id, value: @toy.id %>  <!-- Ensures toy_id is sent -->
+      <%= f.association :seeker_toy, collection: current_user.toys, label: "Select Your Toy to Trade" %>
+      <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
+    <% end %>
     </div>
   </div>
 
-  <div class="map-column">
-    <div class="right-card">
-      <div class="map-container">
-        <div
-          data-controller="map"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-          data-map-markers-value="<%= @markers.to_json %>"
-          class="map"
-        ></div>
-      </div>
+  <!-- Right Column (Map + Owner and Category Cards) -->
+  <div class="map-column right-card">
+    <div class="map-container">
+      <div
+        data-controller="map"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        data-map-markers-value="<%= @markers.to_json %>"
+        class="map"
+      ></div>
+    </div>
 
-      <div class="owner-links">
-        <%= link_to user_path(@toy.user), class: "owner-link" do %>
-          <div class="owner-button">
-            <h3>Check out this user:  <%= @toy.user.username %></h3>
-          </div>
-        <% end %>
+    <div class="owner-links">
+      <!-- Owner Card -->
+      <%= link_to user_path(@toy.user), class: "owner-link" do %>
+        <div class="owner-button">
+          <h3>Check out this user: <%= @toy.user.username %></h3>
+        </div>
+      <% end %>
 
-        <%= link_to toys_path(category: @toy.category), class: "category-link" do %>
-          <div class="category-button">
-            <h3><%= @toy.user.username %> is looking for toys in the <%= @toy.category %> category</h3>
-          </div>
-        <% end %>
-      </div>
+      <!-- Category Card -->
+      <%= link_to toys_path(category: @toy.category), class: "category-link" do %>
+        <div class="category-button">
+          <h3><%= @toy.user.username %> is looking for toys in the <%= @toy.category %> category</h3>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
