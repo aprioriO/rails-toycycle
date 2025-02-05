@@ -1,51 +1,53 @@
-<div class="trade-details">
-  <h3>Trade Details</h3>
-  <% if current_user == @trade.seeker %>
-    <!-- Seeker sees the trader's toy -->
-    <div class="d-flex align-items-center gap-3">
-      <%= image_tag @trade.seeker_toy.photo, class: "toy-image rounded" if @trade.seeker_toy.photo.attached? %>
-      <div>
-        <h5><%= @trade.seeker_toy.name %></h5>
-        <p><strong>Condition:</strong> <%= @trade.seeker_toy.condition %></p>
-        <p><strong>Requested by:</strong> <%= @trade.seeker.username %></p>
+ <div class= "trade-container">
+  <div class="trade-details">
+    <h3>Trade Details</h3>
+    <% if current_user == @trade.seeker %>
+      <!-- Seeker sees the trader's toy -->
+      <div class="d-flex align-items-center gap-3">
+        <%= image_tag @trade.seeker_toy.photo, class: "toy-image rounded" if @trade.seeker_toy.photo.attached? %>
+        <div>
+          <h5><%= @trade.seeker_toy.name %></h5>
+          <p><strong>Condition:</strong> <%= @trade.seeker_toy.condition %></p>
+          <p><strong>Requested by:</strong> <%= @trade.seeker.username %></p>
+        </div>
       </div>
-    </div>
-  <% else %>
-    <!-- Trader sees the seeker's toy -->
-    <div class="d-flex align-items-center gap-3">
-      <%= image_tag @trade.trader_toy.photo, class: "toy-image rounded" if @trade.trader_toy.photo.attached? %>
-      <div>
-        <h5><%= @trade.trader_toy.name %></h5>
-        <p><strong>Condition:</strong> <%= @trade.trader_toy.condition %></p>
-        <p><strong>Requested by:</strong> <%= @trade.trader.username %></p>
+    <% else %>
+      <!-- Trader sees the seeker's toy -->
+      <div class="d-flex align-items-center gap-3">
+        <%= image_tag @trade.trader_toy.photo, class: "toy-image rounded" if @trade.trader_toy.photo.attached? %>
+        <div>
+          <h5><%= @trade.trader_toy.name %></h5>
+          <p><strong>Condition:</strong> <%= @trade.trader_toy.condition %></p>
+          <p><strong>Requested by:</strong> <%= @trade.trader.username %></p>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
 
-  <div class="mt-2">
-    <%= button_to "Accept", accept_trade_path(@trade), method: :patch, class: "btn btn-success btn-sm mx-1" %>
-    <%= button_to "Reject", reject_trade_path(@trade), method: :patch, class: "btn btn-danger btn-sm mx-1" %>
+    <div class="mt-2">
+      <%= button_to "Accept", accept_trade_path(@trade), method: :patch, class: "btn accept-button btn-sm mx-1" %>
+      <%= button_to "Reject", reject_trade_path(@trade), method: :patch, class: "btn reject-button btn-sm mx-1" %>
+    </div>
   </div>
-</div>
 
 
-<div class="container chat">
-  <h1>Your Trade for <%= @trade.seeker_toy.name %></h1>
-  <%= turbo_stream_from "trade_#{@trade.id}_messages" %>
-  <div id="messages" class="messages">
-    <% @trade.messages.each do |message| %>
-      <%= render "messages/message", message: message, user: current_user %>
+  <div class="container chat">
+    <h1>Your Trade for <%= @trade.seeker_toy.name %></h1>
+    <%= turbo_stream_from "trade_#{@trade.id}_messages" %>
+    <div id="messages" class="messages">
+      <% @trade.messages.each do |message| %>
+        <%= render "messages/message", message: message, user: current_user %>
+      <% end %>
+    </div>
+    <%= simple_form_for [@trade, @message],
+        html: {class: "d-flex"} do |f|
+        %>
+      <% other_user = current_user == @trade.seeker ? @trade.trader : @trade.seeker %>
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message #{other_user.username}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
     <% end %>
   </div>
-  <%= simple_form_for [@trade, @message],
-      html: {class: "d-flex"} do |f|
-      %>
-    <% other_user = current_user == @trade.seeker ? @trade.trader : @trade.seeker %>
-    <%= f.input :content,
-      label: false,
-      placeholder: "Message #{other_user.username}",
-      wrapper_html: {class: "flex-grow-1"}
-    %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-  <% end %>
 </div>

@@ -1,34 +1,66 @@
+.trade-container {
+  display: flex; /* Align children (trade-details & chat) side by side */
+  justify-content: space-between; /* Space them out */
+  align-items: flex-start; /* Align to the top */
+  width: 80%; /* Take full width */
+  align-items: center;
+  height: 80%;
+  padding: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
 .trade-details {
   background: white;
-  padding: 1.5rem;
+  padding: 10px;
   border-radius: 10px;
-  margin-top: 1rem;
+  margin-top: 9px;
   width: 75%;
+  height: calc(80vh - 75px);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  border-radius: 10px 0 0 0;
 
   .toy-image {
-    width: 150px; /* Small toy image */
-    height: 150px;
+    width: 80%; /* Small toy image */
+    height: auto;
     object-fit: cover;
     border-radius: 10px;
+  }
+
+  .accept-button{
+    background-color: #00CACD;
+    border-radius: 5px;
+  }
+
+  .reject-button {
+    background-color: #FF7935;
+    border-radius: 5px;
   }
 }
 
 
 .chat {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 25%; /* Smaller chat */
-  height: 35vh;
+  padding: 10px;
+  flex: 1;
+  position: relative; /* Ensures chat stays visible */
+  margin-top: 9px;
+  height: calc(80vh - 75px);
+  display: flex;
   border: 1px solid #ddd;
   background: white;
-  margin-top: 10px;
-  /* height: calc(100vh - 75px); */
   display: flex;
+  flex-shrink: 0;
   flex-direction: column;
   justify-content: space-between;
-  flex-grow: 1;
   overflow: hidden;
+  z-index: 1000; /* Keeps chat above other elements */
+  border-radius: 10px 0 0 0;
+
 
   h1 {
     font-size: 0.9rem;
