@@ -37,6 +37,8 @@ class TradesController < ApplicationController
 
   def reject
     if @trade.update(status: :rejected)
+      @trade.seeker_toy.update(status: "Available")
+      @trade.trader_toy.update(status: "Available")
       flash[:notice] = "Trade rejected!"
     else
       flash[:alert] = "Something went wrong."

@@ -117,13 +117,35 @@
   border-radius: 20px;
 
 
-  h1 {
-    font-size: 0.9rem;
-    padding: 0.6rem;
+
+  .chat-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    padding: 10px;
     background: white;
     border-bottom: 1px solid #ddd;
-    margin: 0;
+  }
+
+  .chat-profile-container {
+    position: absolute;
+    left: 10px; /* Aligns the profile picture to the left */
+  }
+
+  .chat-profile-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+  }
+
+  .chat-title {
+    flex-grow: 1; /* Allows text to center while keeping image on the left */
     text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0; /* Removes unwanted default margin */
   }
 
   .messages {
