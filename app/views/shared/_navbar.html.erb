@@ -15,9 +15,7 @@
     <div class="col-md-6 col-lg-5 my-3 custom-width"><!-- searchbarAdjust width here -->
       <%= form_with url: toys_path, method: :get, class: "d-flex search-form" do %>
         <div class="input-group">
-          <span class="input-group-text" id="searchIcon">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </span>
+
           <%= text_field_tag :query,
             params[:query],
             class: "form-control search-input",
