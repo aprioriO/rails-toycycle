@@ -21,43 +21,53 @@
       <p><strong>Location:</strong> <%= @toy.location %></p>
     </div>
 
-    <!-- Trade Request -->
-    <% unless @toy.user == current_user %>
+  </div>
+
+
+  <!-- Right Column (Map + Owner and Category Cards) -->
+<div class="map-column right-card">
+
+      <% unless @toy.user == current_user %>
       <div class="trade-request-container">
-      <%= simple_form_for [@toy, @trade], url: toy_trades_path(@toy), html: { data: { turbo: false } } do |f| %>
-        <%= f.hidden_field :toy_id, value: @toy.id %>  <!-- Ensures toy_id is sent -->
-        <%= f.association :seeker_toy, collection: current_user.toys, label: "Select Your Toy to Trade" %>
-        <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
+        <%= simple_form_for [@toy, @trade], url: toy_trades_path(@toy), html: { data: { turbo: false } } do |f| %>
+          <%= f.hidden_field :toy_id, value: @toy.id %>  <!-- Ensures toy_id is sent -->
+
+          <%= f.input :seeker_toy_id,
+              collection: current_user.toys.map { |t| [ "#{t.name} - #{t.category}", t.id ] },
+              label: "Select Your Toy to Trade",
+              include_blank: "Choose a toy" %>
+
+          <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
+        <% end %>
+      </div>
       <% end %>
+      <div class="showmap-container">
+        <div
+          data-controller="map"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+          data-map-markers-value="<%= @markers.to_json %>"
+          class="map"
+        ></div>
+      </div>
+
+  <!-- Owner & Category Container -->
+  <div class="owner-category-container">
+    <div class="owner-links">
+      <%= link_to user_path(@toy.user), class: "owner-link" do %>
+        <% if @toy.user.photo.attached? %>
+          <%= image_tag url_for(@toy.user.photo), class: "owner-image rounded-circle", alt: @toy.user.username %>
+        <% else %>
+          <img src="https://via.placeholder.com/50" class="owner-image rounded-circle" alt="Default Avatar">
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- Category Card -->
+    <%= link_to toys_path(category: @toy.category), class: "category-link" do %>
+      <div class="category-button">
+        <h3><%= @toy.user.username %> is looking for <%= @toy.category %> </h3>
       </div>
     <% end %>
   </div>
-
-  <!-- Right Column (Map + Owner and Category Cards) -->
-  <div class="map-column right-card">
-    <div class="map-container">
-      <div
-        data-controller="map"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-        data-map-markers-value="<%= @markers.to_json %>"
-        class="map"
-      ></div>
-    </div>
-
-    <div class="owner-links">
-      <!-- Owner Card -->
-      <%= link_to user_path(@toy.user), class: "owner-link" do %>
-        <div class="owner-button">
-          <h3>Check out this user: <%= @toy.user.username %></h3>
-        </div>
-      <% end %>
-
-      <!-- Category Card -->
-      <%= link_to toys_path(category: @toy.category), class: "category-link" do %>
-        <div class="category-button">
-          <h3><%= @toy.user.username %> is looking for toys in the <%= @toy.category %> category</h3>
-        </div>
-      <% end %>
-    </div>
-  </div>
+</div>
 </div>
