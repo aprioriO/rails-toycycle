@@ -4,7 +4,7 @@
   <!-- Toys Requested Section -->
   <div class="card-dashboard shadow-sm mb-4">
     <div class="card-header-h1">
-      <h3 class="mb-0">Requests</h3>
+      <h3 class="mb-0">Requests Sent</h3>
     </div>
     <div class="card-seeking-toys">
       <% if current_user.trades_as_seeker.any? %>
@@ -13,8 +13,17 @@
             <%= link_to trade_path(trade), class: "text-decoration-none text-dark" do %>
               <div class="card-seekingtoys mb-3 p-2">
                 <div class="card-seekingtoy-info d-flex align-items-center justify-content-between">
-                  <h5 class="card-seekingtoy-title"><%= trade.trader_toy.name %></h5>
-                  <p class="card-status-text"><strong>Status:</strong> <%= trade.status.capitalize %></p>
+                  <% if trade.trader_toy.photo.attached? %>
+                    <%= cl_image_tag trade.trader_toy.photo.key, class: "rounded-toy-image", alt: trade.trader_toy.name %>
+                  <% else %>
+                    <img src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
+                        alt="<%= trade.trader_toy.name %> placeholder" class="rounded-toy-image"/>
+                  <% end %>
+
+                  <div class="toy-details-description">
+                    <h5 class="card-seekingtoy-title"><%= trade.trader_toy.name %></h5>
+                    <p class="card-status-text"><strong>Status:</strong> <%= trade.status.capitalize %></p>
+                  </div>
                 </div>
               </div>
             <% end %>
@@ -29,7 +38,7 @@
   <!-- Toys Being Traded Section -->
   <div class="card-dashboard shadow-sm">
     <div class="traders-trades-card-header-h1">
-      <h3 class="mb-0">Trades</h3>
+      <h3 class="mb-0">Trades Received</h3>
     </div>
     <div class="card-trading-toys">
       <% if current_user.trades_as_trader.any? %>
@@ -38,8 +47,17 @@
             <%= link_to trade_path(trade), class: "text-decoration-none text-dark" do %>
               <div class="card-tradingtoys mb-3 p-2">
                 <div class="card-tradingtoy-info d-flex align-items-center justify-content-between">
-                  <h5 class="card-tradingtoy-title"><%= trade.seeker.username %> want to trade their <%= trade.seeker_toy.name %> for your <%= trade.trader_toy.name %></h5>
-                  <p class="card-status-text"><strong>Status:</strong> <%= trade.status.capitalize %></p>
+                  <% if trade.seeker_toy.photo.attached? %>
+                    <%= cl_image_tag trade.seeker_toy.photo.key, class: "rounded-toy-image", alt: trade.trader_toy.name %>
+                  <% else %>
+                    <img src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM="
+                        alt="<%= trade.seeker_toy.name %> placeholder" class="rounded-toy-image"/>
+                  <% end %>
+
+                  <div class="toy-details-description">
+                    <h5 class="card-tradingtoy-title"><%= trade.seeker.username %> want to trade their <%= trade.seeker_toy.name %> for your <%= trade.trader_toy.name %></h5>
+                    <p class="card-status-text"><strong>Status:</strong> <%= trade.status.capitalize %></p>
+                  </div>
                 </div>
               </div>
             <% end %>

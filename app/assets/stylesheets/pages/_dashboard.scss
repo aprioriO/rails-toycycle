@@ -40,6 +40,14 @@
   text-align: center;
 }
 
+.rounded-toy-image {
+  width: 50px; /* Smaller size */
+  height: 50px;
+  border-radius: 50%; /* Fully rounded */
+  object-fit: cover; /* Ensures it maintains aspect ratio and fills the space */
+  border: 2px solid #ddd; /* Optional: Adds a subtle border */
+  margin-left: 20px;
+}
 
 /* Row Styles */
 .row-dashboard {
@@ -48,12 +56,9 @@
   width: 100%;
 }
 
-.toy-image-avatar {
-  width: 50px; /* Adjust image size */
-  height: 50px;
-  border-radius: 8px; /* Slightly rounded corners */
-  object-fit: cover; /* Ensures the image covers the area properly */
-  margin-right: 10px; /* Spacing between image and text */
+.toy-details-description{
+  display: flex;
+  flex-direction: row;
 }
 
 /* Styling for card-seekingtoy-info */
@@ -61,7 +66,7 @@
   width: 100%; /* Ensure cards take full width of parent */
   text-align: center;
   display: flex; /* Using Flexbox for alignment */
-  justify-content: space-between; /* Distributes space between child elements */
+  justify-content: flex-start; /* Distributes space between child elements */
   align-items: center; /* Centers content vertically */
   padding: 10px; /* Padding inside the card */
   background-color: white; /* White background */
@@ -70,23 +75,24 @@
   transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
   border: none;
   margin: 0;
+  text-wrap: none;
 }
 
-.card-seekingtoy-info:hover, .card-tradeingtoy-info:hover {
+.card-seekingtoy-info:hover, .card-tradingtoy-info:hover {
   transform: scale(1.02); /* Slight scaling effect on hover */
   background-color: #f8f9fa; /* Light background change on hover */
 }
 
-.card-seekingtoy-title {
+.card-seekingtoy-title, .card-tradingtoy-title {
   font-weight: bold; /* Bold font for the toy name */
   color: #333; /* Dark gray color for text */
-  margin-right: 10px; /* Space between the title and status */
+  margin-right: 200px; /* Space between the title and status */
 }
 
 .card-status-text {
   font-weight: bold; /* Bold font for the status text */
   color: #555; /* Medium gray color for status */
-  margin-left: 10px; /* Space between status text and the title */
+  margin-left: 350px; /* Space between status text and the title */
 }
 
 /* Responsive Design (Optional) */
