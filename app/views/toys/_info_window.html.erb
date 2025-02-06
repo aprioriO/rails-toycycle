@@ -1,2 +1,4 @@
-<h2><%= link_to toy.name, toy_path(toy) %></h2>
-<p><%= toy.location %></p
+<%= link_to toy_path(toy), class: "mapboxgl-popup-content" do %>
+ <%= image_tag toy.photo, class: "toy-image" if toy.photo.attached? %>
+ <h4><%= toy.name %></h4>
+<% end %>

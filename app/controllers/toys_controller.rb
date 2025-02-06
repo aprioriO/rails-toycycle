@@ -24,6 +24,7 @@ class ToysController < ApplicationController
       @toys = @toys.where("name ILIKE ?", "%#{params[:query]}%")
     end
 
+
     @markers = @toys.geocoded.map do |toy|
       {
         lat: toy.latitude,
