@@ -59,14 +59,16 @@
 .toy-details-description{
   display: flex;
   flex-direction: row;
+  align-items: center;
+  gap: 60px;
 }
 
 /* Styling for card-seekingtoy-info */
 .card-seekingtoy-info, .card-tradingtoy-info {
-  width: 100%; /* Ensure cards take full width of parent */
+  /* width: 100%; /* Ensure cards take full width of parent */
   text-align: center;
   display: flex; /* Using Flexbox for alignment */
-  justify-content: flex-start; /* Distributes space between child elements */
+  justify-content: space-between; /* Distributes space between child elements */
   align-items: center; /* Centers content vertically */
   padding: 10px; /* Padding inside the card */
   background-color: white; /* White background */
@@ -74,8 +76,6 @@
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visual appeal */
   transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
   border: none;
-  margin: 0;
-  text-wrap: none;
 }
 
 .card-seekingtoy-info:hover, .card-tradingtoy-info:hover {
@@ -84,15 +84,15 @@
 }
 
 .card-seekingtoy-title, .card-tradingtoy-title {
-  font-weight: bold; /* Bold font for the toy name */
   color: #333; /* Dark gray color for text */
-  margin-right: 200px; /* Space between the title and status */
+  margin: 0; /* Space between the title and status */
 }
 
 .card-status-text {
   font-weight: bold; /* Bold font for the status text */
   color: #555; /* Medium gray color for status */
-  margin-left: 350px; /* Space between status text and the title */
+  margin-right:  40px;
+  padding-top: 10px; /* Space between status text and the title */
 }
 
 /* Responsive Design (Optional) */
