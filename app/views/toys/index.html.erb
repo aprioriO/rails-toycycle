@@ -27,7 +27,7 @@
   <!-- Toy Cards Section -->
   <div class="row main-container">
     <div class="col-md-8 scrollable-content"> <!-- Adjusted width for two columns -->
-      <div class="row row-cols-1 row-cols-md-2 g-4"> <!-- Set to 2 columns -->
+      <div class="row row-cols-1 row-cols-md-2 g-4">
         <% @toys.each_with_index do |toy, index| %>
           <div class="col">
             <%= link_to toy_path(toy), class: "toy-card-link" do %>
@@ -59,4 +59,5 @@
       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
+
 </div>

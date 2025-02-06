@@ -54,10 +54,10 @@
 
 .floating-map-container {
   position: fixed;
-  top: 275px; /* Adjust this value to match your navbar height + desired spacing */
+  top: 225px; /* Adjust this value to match your navbar height + desired spacing */
   right: 20px; /* 20px from the right edge of the screen */
   width: 450px;
-  height: 400px;
+  height: 425px;
   z-index: 1000;
   background: white;
   border-radius: 20px;
