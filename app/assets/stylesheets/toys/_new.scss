@@ -1,9 +1,28 @@
 .form-container {
-  max-width: 600px; /* Set a max-width for the form */
+  max-width: 800px; /* Set a max-width for the form */
   margin: 0 auto;   /* Center the form horizontally */
   margin-top: 20px;
   padding: 20px;    /* Add padding inside the form */
-  border: 5px solid #7653f5; /* border colour*/
-  border-radius: 8px; /* Rounded corners */
-  background-color: #f8f9fa; /* Light background color for contrast */
+  border: 5px solid #7653f5; /* b
+  border-radius: 10px; /* Rounded corners */
+  background-color: #7653f5; /* Light background color for contrast */
+  color: white;
+}
+
+.btn-submit {
+  background-color: #f575ae;
+  color: white;
+  border-radius: 10px;
+}
+
+/* Optional: Add some spacing above the form */
+body {
+  padding-top: 50px;
+}
+
+.centered-heading {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
