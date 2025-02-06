@@ -14,14 +14,14 @@
   border-color: #7653f5;
   color: white;
   border-radius: 10px;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   border-left: none; /* Ensures smooth transition between input and button */
 }
 
 .search-input {
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
   border-right: none; /* Removes default border between input and button */
 }
 

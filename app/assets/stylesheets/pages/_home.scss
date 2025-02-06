@@ -24,7 +24,13 @@
 
 .btn-landingpage {
   margin-top: 300px;
-  padding: 12px 24px;
+  padding: 12px 20px;
   font-size: 1.2rem;
   border-radius: 8px;
+}
+
+.btn-landingpage:hover {
+  background-color: #f44c91 !important; /* Change this to your desired hover color */
+  color: white; /* Optional: Change text color on hover */
+  transition: background-color 0.3s ease; /* Smooth transition */
 }
