@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 <div class="page-title">
   <h1><%= @toy.name %></h1>
 </div>
@@ -12,7 +13,6 @@
     </div>
 
     <!-- Toy Title -->
-    <h2 class="toy-title"><%= @toy.name %></h2>
 
     <div class="toy-info">
       <p><strong>Category:</strong> <%= @toy.category %></p>
@@ -26,29 +26,30 @@
 
   <!-- Right Column (Map + Owner and Category Cards) -->
 <div class="map-column right-card">
+  <% unless @toy.user == current_user %>
+  <h3 class="trade-title">Select your toy to trade</h3>
+  <div class="trade-request-container">
+    <%= simple_form_for [@toy, @trade], url: toy_trades_path(@toy), html: { data: { turbo: false } } do |f| %>
+      <%= f.hidden_field :toy_id, value: @toy.id %>  <!-- Ensures toy_id is sent -->
 
-      <% unless @toy.user == current_user %>
-      <div class="trade-request-container">
-        <%= simple_form_for [@toy, @trade], url: toy_trades_path(@toy), html: { data: { turbo: false } } do |f| %>
-          <%= f.hidden_field :toy_id, value: @toy.id %>  <!-- Ensures toy_id is sent -->
+      <%= f.input :seeker_toy_id,
+          collection: current_user.toys.map { |t| [ "#{t.name} - #{t.category}", t.id ] },
+          include_blank: "choose a toy",
+          label: false %>
 
-          <%= f.input :seeker_toy_id,
-              collection: current_user.toys.map { |t| [ "#{t.name} - #{t.category}", t.id ] },
-              label: "Select Your Toy to Trade",
-              include_blank: "Choose a toy" %>
+      <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
+    <% end %>
+  </div>
+  <% end %>
+  <div class="showmap-container">
+    <div
+      data-controller="map"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+      data-map-markers-value="<%= @markers.to_json %>"
+      class="map"
+    ></div>
+  </div>
 
-          <%= f.submit "Request to Trade", class: "btn btn-primary px-4" %>
-        <% end %>
-      </div>
-      <% end %>
-      <div class="showmap-container">
-        <div
-          data-controller="map"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-          data-map-markers-value="<%= @markers.to_json %>"
-          class="map"
-        ></div>
-      </div>
 
   <!-- Owner & Category Container -->
   <div class="owner-category-container">
