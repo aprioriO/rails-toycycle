@@ -4,7 +4,7 @@
   <!-- Toys Requested Section -->
   <div class="card-dashboard shadow-sm mb-4">
     <div class="card-header-h1">
-      <h3 class="mb-0">Toys that you Requested</h3>
+      <h3 class="mb-0">Requests</h3>
     </div>
     <div class="card-seeking-toys">
       <% if current_user.trades_as_seeker.any? %>
@@ -28,8 +28,8 @@
 
   <!-- Toys Being Traded Section -->
   <div class="card-dashboard shadow-sm">
-    <div class="card-header-h1">
-      <h3 class="mb-0">Toys that you are Trading</h3>
+    <div class="traders-trades-card-header-h1">
+      <h3 class="mb-0">Trades</h3>
     </div>
     <div class="card-trading-toys">
       <% if current_user.trades_as_trader.any? %>
@@ -38,7 +38,7 @@
             <%= link_to trade_path(trade), class: "text-decoration-none text-dark" do %>
               <div class="card-tradingtoys mb-3 p-2">
                 <div class="card-tradingtoy-info d-flex align-items-center justify-content-between">
-                  <h5 class="card-tradingtoy-title">A user seeking <%= trade.seeker_toy.name %> would like to trade for <%= trade.trader_toy.name %></h5>
+                  <h5 class="card-tradingtoy-title"><%= trade.seeker.username %> want to trade their <%= trade.seeker_toy.name %> for your <%= trade.trader_toy.name %></h5>
                   <p class="card-status-text"><strong>Status:</strong> <%= trade.status.capitalize %></p>
                 </div>
               </div>

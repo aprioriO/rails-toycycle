@@ -20,6 +20,10 @@ class ToysController < ApplicationController
     @toys = Toy.where(status: "Available")
     @toys = @toys.where(category: params[:category]) if params[:category].present?# Filters by category
 
+    if params[:query].present?
+      @toys = @toys.where("name ILIKE ?", "%#{params[:query]}%")
+    end
+
     @markers = @toys.geocoded.map do |toy|
       {
         lat: toy.latitude,
@@ -29,9 +33,6 @@ class ToysController < ApplicationController
       }
     end
 
-    if params[:query].present?
-      @toys = @toys.where("name ILIKE ?", "%#{params[:query]}%")
-    end
 
   end
 

@@ -29,13 +29,12 @@
 }
 
 /* Toy Image */
-.toy-image-wrapper {
-  background: rgba(255, 255, 255, 0.2);
-  padding: 10px;
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-}
+// .toy-image-wrapper {
+//   padding: 10px;
+//   border-radius: 12px;
+//   display: flex;
+//   justify-content: center;
+// }
 
 .toy-image {
   width: 100%;
@@ -48,14 +47,14 @@
 /* Toy Title */
 .toy-title {
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   margin: 20px 0;
 }
 
 /* Toy Info */
 .toy-info {
   margin-top: 20px;
-  font-size: 1.1rem;
+  font-size: 20px;
   word-wrap: break-word;
 }
 
@@ -63,6 +62,7 @@
 .trade-request-container {
   text-align: center;
   margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .trade-request-container .btn-primary {
@@ -74,11 +74,18 @@
   padding: 12px 20px;
   border-radius: 20px;
   transition: background-color 0.3s ease, border-color 0.3s ease;
+  outline: none; /* Removes default outline */
 }
+
 
 .trade-request-container .btn-primary:hover {
   background-color: #e54c90;
   border-color: #e54c90;
+}
+
+.trade-request-container .btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(245, 117, 174, 0.5); /* Soft pink glow */
 }
 
 /* Right Column (Map & Cards) */
@@ -93,10 +100,11 @@
 }
 
 /* Map */
-.map-container {
+.showmap-container {
   width: 100%;
-  height: 600px; /* Fixed height */
-  margin-bottom: 20px; /* Remove negative margins */
+  height: 400px; /* Fixed height */
+  margin-bottom: 20px;
+  // margin-top: 40px/* Remove negative margins */
 }
 
 .map {
@@ -106,21 +114,30 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.owner-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #7653f5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 /* Owner & Category Cards */
 .owner-links {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  align-items: center;
 }
 
-.owner-button, .category-button {
+
+.category-button {
   background-color: #7653f5;
   color: white;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
   text-decoration: none;
-  display: block;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -128,4 +145,15 @@
 .owner-button:hover, .category-button:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.owner-link:hover .owner-image {
+  transform: scale(1.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.owner-category-container {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Adjust spacing */
 }
