@@ -1,76 +1,72 @@
 .navbar-lewagon {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   background: white;
-  padding: 5px 50px; /* Adjust padding for a more compact navbar */
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow for depth */
+  padding: 0.5rem 1rem; /* Reduce navbar height */
+  padding: 5px 15px; /* Reduce padding */
+  height: 120px; /* Adjust overall height */
 }
 
-/* Navbar Brand Logo */
-.navbar-lewagon .navbar-brand img {
-  width: 150px;  /* Increase size for better visibility */
-  height: auto;
+
+.btn-search {
+  background-color: #7653f5;
+  border-color: #7653f5;
+  color: white;
+  border-radius: 10px;
 }
 
-// .navbar-lewagon .navbar-collapse {
-//   flex-grow: 0;
-// }
+.btn-search:hover {
+  background-color: #5f42c4;
+  border-color: #5f42c4;
+  color: white;
+}
 
-// .navbar-lewagon .navbar-brand img {
-//   width: 40px;
-// }
+.search-form {
+  margin-left: 20px; /* Adjust as needed */
+}
+
+.btn-newtoy {
+  background-color: #f575ae;
+  border-color: #f575ae;
+  color: white;
+  border-radius: 10px;
+  white-space: nowrap;
+  display: inline-block;
+  margin-right: 80px;
+}
+
+.btn-newtoy:hover {
+  background-color: #f44c91;
+  border-color: #f44c91;
+  color: white;
+}
+
+.logo-container {
+  margin-left: 10px; /* Reduce left margin */
+
+}
+
+.logo {
+  width: 100px; /* Adjust for desired size */
+  height: 100px; /* Make it square */
+  object-fit: contain; /* Ensures the image is properly scaled */
+}
+
+.custom-width {
+  max-width: 600px; /* Adjust to your needs */
+  width: 100%; /* Ensures responsiveness */
+}
 
 
 .navbar {
-  border-bottom: 15px solid #7653F5; /* Adjust thickness and color */
-}
-
-.navbar .btn-primary {
-  background-color: #00CACD; /* Change button color */
-  border-color: #00CACD;
-  padding: 8px 16px;
-  font-weight: bold;
-  white-space: nowrap;
-  &:hover {
-    background-color: #008B8E; /* Darker shade on hover */
-  }
+  padding: 8px 15px; /* Reduce height */
+  border-bottom: 12px solid #7653F5; /* Reduce border size */
 }
 
 
-    // .nav-item {
-    //   text-align: center;
-    //   display: inline-block;  /* Makes each link behave like a button */
-    //   margin: 5px;           /* Adds space between buttons */
-    // }
-
-    // .nav-item a {
-    //   display: inline-block;
-    //   padding: 10px 20px;     /* Adjust padding to make the button look nice */
-    //   text-align: center;     /* Center the text */
-    //   text-decoration: none;
-    //   border-radius: 8px;
-    //   font-weight: bold;
-    //   color: white;           /* Text color */
-    //   transition: background-color 0.3s ease; /* Smooth transition */
-    // }
-
-    // /* Different colors for each button */
-    // .btn-educational {
-    //   background-color: #007bff; /* Blue */
-    // }
-
-    // .btn-outdoor {
-    //   background-color: #28a745; /* Green */
-    // }
-
-    // .btn-creative {
-    //   background-color: #ffc107; /* Yellow */
-    // }
-
-    // .btn-action {
-    //   background-color: #dc3545; /* Red */
-    // }
-
-    // /* Hover effects */
-    // .nav-item a:hover {
-    //   opacity: 0.8;
-    // }
+.navbar-nav .nav-item {
+  white-space: nowrap; /* Prevent line breaks */
+  display: flex;
+  align-items: center;
+}

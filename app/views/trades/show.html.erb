@@ -2,36 +2,35 @@
   <div class="trade-details">
     <h3>Trade Details</h3>
     <% if current_user == @trade.seeker %>
-      <!-- Seeker sees the trader's toy -->
-      <div class="d-flex align-items-center gap-3">
-        <%= image_tag @trade.seeker_toy.photo, class: "toy-image rounded" if @trade.seeker_toy.photo.attached? %>
-        <div>
-          <h5><%= @trade.seeker_toy.name %></h5>
-          <p><strong>Condition:</strong> <%= @trade.seeker_toy.condition %></p>
-          <p><strong>Requested by:</strong> <%= @trade.seeker.username %></p>
-        </div>
+      <div class="toy-image-container">
+        <%= image_tag @trade.trader_toy.photo, class: "toy-image rounded" if @trade.seeker_toy.photo.attached? %>
+      </div>
+      <div class="toy-details-display">
+        <h5><%= @trade.trader_toy.name %></h5>
+        <p><strong>Condition:</strong> <%= @trade.seeker_toy.condition %></p>
+        <p><strong>Requested by:</strong> <%= link_to @trade.trader.username, user_path(@trade.trader), class: "user-link" %></p>
       </div>
     <% else %>
-      <!-- Trader sees the seeker's toy -->
-      <div class="d-flex align-items-center gap-3">
-        <%= image_tag @trade.trader_toy.photo, class: "toy-image rounded" if @trade.trader_toy.photo.attached? %>
-        <div>
-          <h5><%= @trade.trader_toy.name %></h5>
-          <p><strong>Condition:</strong> <%= @trade.trader_toy.condition %></p>
-          <p><strong>Requested by:</strong> <%= @trade.trader.username %></p>
-        </div>
+      <div class="toy-image-container">
+        <%= image_tag @trade.seeker_toy.photo, class: "toy-image rounded" if @trade.trader_toy.photo.attached? %>
+      </div>
+      <div class="toy-details-display">
+        <h5><%= @trade.seeker_toy.name %></h5>
+        <p><strong>Condition:</strong> <%= @trade.trader_toy.condition %></p>
+        <p><strong>Requested by:</strong> <%= link_to @trade.seeker.username, user_path(@trade.seeker), class: "user-link" %></p>
       </div>
     <% end %>
 
-    <div class="mt-2">
-      <%= button_to "Accept", accept_trade_path(@trade), method: :patch, class: "btn accept-button btn-sm mx-1" %>
-      <%= button_to "Reject", reject_trade_path(@trade), method: :patch, class: "btn reject-button btn-sm mx-1" %>
+    <div class="trade-actions">
+      <%= button_to "Accept", accept_trade_path(@trade), method: :patch, class: "btn accept-button" %>
+      <%= button_to "Reject", reject_trade_path(@trade), method: :patch, class: "btn reject-button" %>
     </div>
   </div>
 
 
+
   <div class="container chat">
-    <h1>Your Trade for <%= @trade.seeker_toy.name %></h1>
+    <h1>Your Trade for <%= current_user == @trade.seeker ? @trade.trader_toy.name : @trade.seeker_toy.name %></h1>
     <%= turbo_stream_from "trade_#{@trade.id}_messages" %>
     <div id="messages" class="messages">
       <% @trade.messages.each do |message| %>
