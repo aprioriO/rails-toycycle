@@ -65,26 +65,37 @@
 
         <div class="content-section">
           <h2>Reviews</h2>
-          <div class="user-reviews">
-            <% @user.reviews.each do |review| %>
-              <article class="review">
-                <p><%= review.comment %></p>
-                <hr>
-              </article>
-            <% end %>
-          </div>
+            <div class="user-reviews">
+              <% @user.reviews.each do |review| %>
+                <article class="review">
+                  <p><%= review.comment %></p>
+
+
+                  <!-- Display the datestamp -->
+                  <p><strong>Posted on:</strong> <%= review.created_at.strftime("%B %d, %Y at %I:%M %p") %></p> <!-- Custom format for datestamp -->
+
+                  <hr>
+                </article>
+              <% end %>
+            </div>
         </div>
+
 
         <div class="content-section">
           <h2>Leave a Review</h2>
-          <div class="review-form">
-            <%= simple_form_for [@user, @review] do |f| %>
-              <%= f.input :comment %>
-              <%= f.input :rating, collection: 1..5 %>
-              <%= f.submit "Submit review", class: "btn btn-primary" %>
-            <% end %>
-          </div>
+          <% if current_user != @user %> <!-- Check if the current user is not the same as the user being viewed -->
+            <div class="review-form">
+              <%= simple_form_for [@user, @review] do |f| %>
+                <%= f.input :comment %>
+                <%= f.input :rating, collection: 1..5 %>
+                <%= f.submit "Submit review", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          <% else %>
+            <p>You cannot leave a review for your own profile.</p> <!-- Optional message for the user -->
+          <% end %>
         </div>
+
       </div>
     </div>
   </div>
