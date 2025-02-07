@@ -44,6 +44,8 @@ class ToysController < ApplicationController
   def create
     @toy = Toy.new(toy_params)
     @toy.user = current_user
+    @toy.status = "Available" if @toy.status.blank? # Ensure status is set
+
     if @toy.save!
       redirect_to @toy, notice: "Toy created successfully!"
     else
