@@ -1,4 +1,4 @@
- <div class= "trade-container">
+<div class= "trade-container">
   <div class="trade-details">
     <h3>Trade Details</h3>
     <% if current_user == @trade.seeker %>
@@ -21,10 +21,12 @@
       </div>
     <% end %>
 
+    <% if current_user == @trade.trader %>
     <div class="trade-actions">
-      <%= button_to "Accept", accept_trade_path(@trade), method: :patch, class: "btn accept-button" %>
-      <%= button_to "Reject", reject_trade_path(@trade), method: :patch, class: "btn reject-button" %>
+      <%= button_to "Accept", accept_trade_path(@trade), method: :patch, class: "btn accept-button", disabled: @trade.status != "pending" %>
+      <%= button_to "Reject", reject_trade_path(@trade), method: :patch, class: "btn reject-button", disabled: @trade.status != "pending" %>
     </div>
+  <% end %>
   </div>
 
 

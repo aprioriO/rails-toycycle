@@ -40,6 +40,14 @@
   text-align: center;
 }
 
+.rounded-toy-image {
+  width: 50px; /* Smaller size */
+  height: 50px;
+  border-radius: 50%; /* Fully rounded */
+  object-fit: cover; /* Ensures it maintains aspect ratio and fills the space */
+  border: 2px solid #ddd; /* Optional: Adds a subtle border */
+  margin-left: 20px;
+}
 
 /* Row Styles */
 .row-dashboard {
@@ -48,17 +56,16 @@
   width: 100%;
 }
 
-.toy-image-avatar {
-  width: 50px; /* Adjust image size */
-  height: 50px;
-  border-radius: 8px; /* Slightly rounded corners */
-  object-fit: cover; /* Ensures the image covers the area properly */
-  margin-right: 10px; /* Spacing between image and text */
+.toy-details-description{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 60px;
 }
 
 /* Styling for card-seekingtoy-info */
 .card-seekingtoy-info, .card-tradingtoy-info {
-  width: 100%; /* Ensure cards take full width of parent */
+  /* width: 100%; /* Ensure cards take full width of parent */
   text-align: center;
   display: flex; /* Using Flexbox for alignment */
   justify-content: space-between; /* Distributes space between child elements */
@@ -69,24 +76,23 @@
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for better visual appeal */
   transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
   border: none;
-  margin: 0;
 }
 
-.card-seekingtoy-info:hover, .card-tradeingtoy-info:hover {
+.card-seekingtoy-info:hover, .card-tradingtoy-info:hover {
   transform: scale(1.02); /* Slight scaling effect on hover */
   background-color: #f8f9fa; /* Light background change on hover */
 }
 
-.card-seekingtoy-title {
-  font-weight: bold; /* Bold font for the toy name */
+.card-seekingtoy-title, .card-tradingtoy-title {
   color: #333; /* Dark gray color for text */
-  margin-right: 10px; /* Space between the title and status */
+  margin: 0; /* Space between the title and status */
 }
 
 .card-status-text {
   font-weight: bold; /* Bold font for the status text */
   color: #555; /* Medium gray color for status */
-  margin-left: 10px; /* Space between status text and the title */
+  margin-right:  40px;
+  padding-top: 10px; /* Space between status text and the title */
 }
 
 /* Responsive Design (Optional) */
