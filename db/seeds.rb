@@ -48,16 +48,16 @@ puts "Seeded #{User.count} users"
 
 toys = [
   { name: "Shape Sorter", user: User.all[0], category: "Educational Toys", description: "Helps improve fine motor skills.", condition: "New", location: "123 Baker Street, London, NW1 6XE, United Kingdom", need_in_return: "Miniature Dollhouse", status: "Available" },
-  { name: "Stacking Blocks", user: User.all[1], category: "Educational Toys", description: "Colorful wooden blocks for stacking fun.", condition: "Used", location: "56 High Street, Camden, London, NW1 8DB, United Kingdom", need_in_return: "Friends TV Series", status: "Available" },
+  { name: "Stacking Blocks", user: User.all[1], category: "Educational Toys", description: "Colorful wooden blocks for stacking fun.", condition: "Used", location: "Cardiff", need_in_return: "Friends TV Series", status: "Available" },
   { name: "Science Kit", user: User.all[2], category: "Educational Toys", description: "Explore simple science experiments.", condition: "Good", location: "45 Deansgate, Manchester, M3 2EN, United Kingdom", need_in_return: "Interactive Doll", status: "Available" },
   { name: "Magic Maths Game", user: User.all[3], category: "Educational Toys", description: "A spellbinding game that makes maths and sums magic.", condition: "Excellent", location: "12 Oxford Street, Manchester, M1 5AN, United Kingdom", need_in_return: "Superhero Action Figure", status: "Available" },
   { name: "Robotics Kit", user: User.all[4], category: "Educational Toys", description: "Build your first robot.", condition: "New", location: "23 High Street, Dartford, DA1 1BY, United Kingdom", need_in_return: "Baby Doll", status: "Available" },
-  { name: "Clipology", user: User.all[5], category: "Educational Toys", description: "All the best clips rolled into fun.", condition: "New", location: "78 Greenhithe Road, Dartford, DA9 9HR, United Kingdom", need_in_return: "Stuffed Bear", status: "Available" },
+  { name: "Clipology", user: User.all[5], category: "Educational Toys", description: "All the best clips rolled into fun.", condition: "New", location: "cambridge", need_in_return: "Stuffed Bear", status: "Available" },
   { name: "Push Car", user: User.all[6], category: "Outdoor & Sports Toys", description: "Perfect for toddlers to ride around.", condition: "Good", location: "34 Kings Road, Reading, RG1 8DN, United Kingdom", need_in_return: "Calligraphy Kit", status: "Available" },
   { name: "Soft Ball", user: User.all[7], category: "Outdoor & Sports Toys", description: "Soft and safe for toddlers.", condition: "Used", location: "105 Coley Ave, Coley park, Reading, RG16FL, United Kingdom", need_in_return: "Clay Sculpting Set", status: "Available" },
   { name: "Hula Hoop", user: User.all[0], category: "Outdoor & Sports Toys", description: "Fun outdoor activity.", condition: "Excellent", location: "123 Baker Street, London, NW1 6XE, United Kingdom", need_in_return: "Painting Set", status: "Available" },
   { name: "Jump Rope", user: User.all[1], category: "Outdoor & Sports Toys", description: "Great for fitness and play.", condition: "Good", location: "56 High Street, Camden, London, NW1 8DB, United Kingdom", need_in_return: "Playdough", status: "Available" },
-  { name: "Skateboard", user: User.all[2], category: "Outdoor & Sports Toys", description: "For advanced outdoor fun.", condition: "New", location: "45 Deansgate, Manchester, M3 2EN, United Kingdom", need_in_return: "Coloring Book", status: "Available" },
+  { name: "Skateboard", user: User.all[2], category: "Outdoor & Sports Toys", description: "For advanced outdoor fun.", condition: "New", location: "Newport,United Kingdom", need_in_return: "Coloring Book", status: "Available" },
   { name: "Soccer Set", user: User.all[3], category: "Outdoor & Sports Toys", description: "Includes ball and goal net.", condition: "Used", location: "12 Oxford Street, Manchester, M1 5AN, United Kingdom", need_in_return: "Miniature Dollhouse", status: "Available" },
   { name: "Coloring Book", user: User.all[4], category: "Creative & Art Toys", description: "Perfect for little artists.", condition: "New", location: "23 High Street, Dartford, DA1 1BY, United Kingdom", need_in_return: "Skateboard", status: "Available" },
   { name: "Playdough", user: User.all[5], category: "Creative & Art Toys", description: "Non-toxic and colorful.", condition: "Good", location: "78 Greenhithe Road, Dartford, DA9 9HR, United Kingdom", need_in_return: "Jump Rope", status: "Available" },
@@ -66,10 +66,10 @@ toys = [
   { name: "Clay Sculpting Set", user: User.all[0], category: "Creative & Art Toys", description: "Advanced sculpting tools.", condition: "New", location: "123 Baker Street, London, NW1 6XE, United Kingdom", need_in_return: "Push Car", status: "Available" },
   { name: "Calligraphy Kit", user: User.all[1], category: "Creative & Art Toys", description: "Learn artistic writing.", condition: "New", location: "56 High Street, Camden, London, NW1 8DB, United Kingdom", need_in_return: "Clipology", status: "Available" },
   { name: "Stuffed Bear", user: User.all[2], category: "Action Figures & Dolls", description: "Soft and cuddly bear.", condition: "New", location: "45 Deansgate, Manchester, M3 2EN, United Kingdom", need_in_return: "Robotics Kit", status: "Available" },
-  { name: "Baby Doll", user: User.all[3], category: "Action Figures & Dolls", description: "Cute doll for toddlers.", condition: "Used", location: "12 Oxford Street, Manchester, M1 5AN, United Kingdom", need_in_return: "Magic Maths Game", status: "Available" },
+  { name: "Baby Doll", user: User.all[3], category: "Action Figures & Dolls", description: "Cute doll for toddlers.", condition: "Used", location: "Ipswich", need_in_return: "Magic Maths Game", status: "Available" },
   { name: "Superhero Action Figure", user: User.all[4], category: "Action Figures & Dolls", description: "Exciting and fun.", condition: "Good", location: "23 High Street, Dartford, DA1 1BY, United Kingdom", need_in_return: "Science Kit", status: "Available" },
   { name: "Interactive Doll", user: User.all[5], category: "Action Figures & Dolls", description: "Talks and sings.", condition: "Excellent", location: "78 Greenhithe Road, Dartford, DA9 9HR, United Kingdom", need_in_return: "Shape Sorter", status: "Available" },
-  { name: "Friends TV Series", user: User.all[6], category: "Action Figures & Dolls", description: "For serious collectors.", condition: "New", location: "34 Kings Road, Reading, RG1 8DN, United Kingdom", need_in_return: "Stacking Blocks", status: "Available" },
+  { name: "Friends TV Series", user: User.all[6], category: "Action Figures & Dolls", description: "For serious collectors.", condition: "New", location: "Inverness", need_in_return: "Stacking Blocks", status: "Available" },
   { name: "Miniature Dollhouse", user: User.all[7], category: "Action Figures & Dolls", description: "Rainbow High Townhouse- 3-Story Wood Dollhouse Playset.", condition: "Good", location: "56 Church Street, Reading, RG4 8AU, United Kingdom", need_in_return: "Magic Maths Game", status: "Available" }
 ]
 
@@ -96,7 +96,7 @@ toy_urls = [
   "https://www.zieler.co.uk/wp-content/uploads/2019/09/09299264.png",
   "https://m.media-amazon.com/images/I/81UhzwkL5YL.__AC_SX300_SY300_QL70_ML2_.jpg",
   "https://m.media-amazon.com/images/I/71re94tv3LL._AC_SX522_.jpg",
-  "https://m.media-amazon.com/images/I/51UGC2cmEgL.__AC_SX300_SY300_QL70_ML2_.jpg",
+  "https://m.media-amazon.com/images/I/81z+MHwzTTL._AC_SY300_SX300_.jpg",
   "https://m.media-amazon.com/images/I/71R4Lkp9FJL.__AC_SX300_SY300_QL70_ML2_.jpg",
   "https://m.media-amazon.com/images/I/91qHtMyjKRS.__AC_SX300_SY300_QL70_ML2_.jpg",
   "https://m.media-amazon.com/images/I/81XEJqlvCsL.__AC_SX300_SY300_QL70_ML2_.jpg"
